@@ -1,0 +1,9 @@
+repos:
+  - repo: https://github.com/ScottChiuNYC/daily_challenge
+    rev: v0.1.4
+    hooks:
+      - id: daily-challenge
+        name: daily challenge
+        entry: python -c "from daily_challenge import main; main()"
+        language: python
+        additional_dependencies: ['matplotlib', 'numpy']

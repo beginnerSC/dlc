@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "learning-game"
+version = "0.1.0"
+description = ""
+authors = ["beginnerSC <25188222+beginnerSC@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pre-commit = "^4.3.0" 
+jupyterlab = "^4.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
