@@ -11,3 +11,4 @@
     * $q_n$: Indeices `(k, l)` of the longest palindromic substring from `s[:n]`
     * $p_n$: Indecies `(i, j)` of the longest palindromic substring ending `s[n-1]`
     * If `s[i-1] == s[n]` then $p_{n+1} = $`(i-1, n)`. See if $q$ should be updated
+    * Also equal to the longest common substring of `s` and `s[::-1]`
