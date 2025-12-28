@@ -15,3 +15,5 @@
 * Maximal square given the grid m
     * shape(i, j) = (k, l) if (shape(i-1, j)==(k-1, l) && shape(i, j-1)==(k, l-1) && m(i, j)==1) this is not right. should take min of shape(i-1, j).first and shape(i, j-1).first, and same for second. 
     * also the question is asking for square, not rectangle
+* Jump game
+    * base case: if a[0] + 2 > a.size() then true. if a[0]==0 and a.size() > 1 then false
