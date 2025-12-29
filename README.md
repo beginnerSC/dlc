@@ -19,3 +19,5 @@
     * base case: if a[0] + 2 > a.size() then true. if a[0]==0 and a.size() > 1 then false
 * Maximum Length of Repeated Subarray
     * make a 2d table of true and false. count longest true sequence along the main diagonal 
+* Longest Common Subsequence
+    * if a[0]==b[0] return 1+lcs(a[1:], b[1:]). Otherwise return max(lcs(a, b[1:]), lcs(a[1:], b))
