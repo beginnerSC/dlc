@@ -23,3 +23,4 @@
     * if a[0]==b[0] return 1+lcs(a[1:], b[1:]). Otherwise return max(lcs(a, b[1:]), lcs(a[1:], b))
 * Palindromic Substrings
     * for i in range(n): if is_palindromic(s[:i]) then count += (1+countStrings(s[i:]))
+    * base case: if len(s)==1: return 1
