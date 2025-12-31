@@ -24,3 +24,18 @@
 * Palindromic Substrings
     * for i in range(n): if is_palindromic(s[:i]) then count += (1+countStrings(s[i:]))
     * base case: if len(s)==1: return 1
+=======================
+from functools import cache
+
+class Solution:
+    def is_palindromic(self, s):
+        return s == s[::-1]
+
+    def countSubstrings(self, s: str) -> int:
+        @cache
+        def dp(i):
+            count = 0
+            for i in range(len(s)):
+                if self.is_palindromic(s[:i]):
+                    count += (1 + dp(s[i:]))
+==========================
