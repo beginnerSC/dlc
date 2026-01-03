@@ -39,3 +39,5 @@ class Solution:
                 if self.is_palindromic(s[:i]):
                     count += (1 + dp(s[i:]))
 ==========================
+
+628
