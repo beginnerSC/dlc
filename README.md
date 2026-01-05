@@ -40,4 +40,7 @@ class Solution:
                     count += (1 + dp(s[i:]))
 ==========================
 
-628 
+* Maximum Product of Three Numbers
+    * only the 5 numbers with the largest magnitudes matter
+    * they can be 5+, 4+1-, 3+2-, ..., where + includes 0
+    * case by case, it can be shown that max(M1*M2*M3, M1*m1*m2) is the answer
