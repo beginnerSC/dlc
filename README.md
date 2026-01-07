@@ -1,7 +1,7 @@
 # dlc
 
 ![2026](yearly_heatmaps/2026.png?ts=10022025) 
-![2025](yearly_heatmaps/2025.png?ts=10022025) 
+![2025](yearly_heatmaps/2025.png?ts=10022025)
 
 * TODO: Move ohhh here. 
 * Maximum subarray given $\{a_j\}$: 
