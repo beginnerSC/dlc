@@ -30,7 +30,22 @@ int coinChange(std::vector<int>& coins, int amount) {   // https://leetcode.com/
                 num_coins.push_back(sub + 1);
             }
         }
-        dp[amount] = *std::min_element(num_coins.begin(), num_coins.end());
+        dp[amount] = std::ranges::min(num_coins);
         return dp[amount];
     }
+}
+
+int climbStairs(int n) {   // https://leetcode.com/problems/climbing-stairs/
+  if (n < 3){
+    return n;
+  } else {
+    int pre = 1;
+    int cur = 2;
+    for (int j=3 ; j<n+1 ; ++j) {
+      int tmp = cur;
+      cur += pre;
+      pre = tmp;
+    }
+    return cur;
+  }
 }

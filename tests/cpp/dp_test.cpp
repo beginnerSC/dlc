@@ -22,3 +22,7 @@ TEST(DpTest, CoinChange) {
     // int amount = 3;
     // EXPECT_EQ(coinChange(coins, amount), -1);
 }
+
+TEST(DpTest, climbStairs) {
+    EXPECT_EQ(climbStairs(5), 8);
+}
