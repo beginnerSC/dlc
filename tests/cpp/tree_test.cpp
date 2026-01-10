@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <dlc_core/tree.h>
+#include "dlc_core/tree.h"
 
 TEST(TreeTest, LevelOrder) {
     TreeNode* root = new TreeNode(3, new TreeNode(9), new TreeNode(20, new TreeNode(15), new TreeNode(7)));

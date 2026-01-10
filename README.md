@@ -64,6 +64,11 @@ class Solution:
         * CTest looks for `CTestTestfile.cmake` which is in `build`, as CTest is included and enabled in project root's `CMakeLists.txt`
     * `F5` if using VS Code
         * In `.vscode/launch.json`, use `"preLaunchTask": "CMake: build"` instead of `"preLaunchTask": "CMake: config and build"` to skip repeated config step
+    * When new cpp/h files are added, the project needs to be reconfigured
 * `vcpkg add port fmt` to add the `fmt` library to C++ dependencies
 * TODO: upgrade poetry (which will break all other projects) and add a `build.py`
     * AI says I can run `poetry config --migrate` to fix `pyproject.toml`? 
+
+### Notes
+
+* Currently this project has an examples folder compiled but the executable is not run by `cnb.bat` nor `.vscode/launch.json`

@@ -9,4 +9,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)     # Optional: Force CMake to error if the 
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_subdirectory(dlc_core)
+add_subdirectory(examples)
 add_subdirectory(tests/cpp)

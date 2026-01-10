@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <dlc_core/dp.h>
+#include "dlc_core/dp.h"
 
 TEST(DpTest, HouseRobber) {
     std::vector<int> nums1 = {1, 2, 3, 1};
