@@ -38,7 +38,7 @@
                 "--preset=vcpkg"
             ],
             "group": "build",
-            "dependsOn": ["CMake: build"]
+            "dependsOn": ["CMake: build (Debug)"]
         }
     ]
 }
