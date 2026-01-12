@@ -1,6 +1,17 @@
 #include <vector>
 #include <algorithm>
 #include <unordered_map>
+#include <ranges>
+
+int maxSubArray(std::vector<int>& nums) { // https://leetcode.com/problems/maximum-subarray/description/
+    int res = nums[0];
+    int cur_max = nums[0];
+    for (int n : nums | std::views::drop(1)) {
+        cur_max = std::max(cur_max + n, n);
+        res = std::max(cur_max, res);
+    }
+    return res;
+}
 
 int rob(std::vector<int>& nums) {   // https://leetcode.com/problems/house-robber/
     int pre = 0;

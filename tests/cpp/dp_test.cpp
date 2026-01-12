@@ -1,6 +1,18 @@
 #include <gtest/gtest.h>
 #include "dlc_core/dp.h"
 
+
+TEST(DpTest, MaxSubArray) {
+    std::vector<int> nums1 = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    EXPECT_EQ(maxSubArray(nums1), 6);
+
+    std::vector<int> nums2 = {1};
+    EXPECT_EQ(maxSubArray(nums2), 1);
+
+    std::vector<int> nums3 = {5, 4, -1, 7, 8};
+    EXPECT_EQ(maxSubArray(nums3), 23);
+}
+
 TEST(DpTest, HouseRobber) {
     std::vector<int> nums1 = {1, 2, 3, 1};
     EXPECT_EQ(rob(nums1), 4);
