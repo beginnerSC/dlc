@@ -1,5 +1,4 @@
-#ifndef DLC_CORE_VECTOR_H_
-#define DLC_CORE_VECTOR_H_
+#pragma once
 
 #include <stdexcept>
 #include <iostream>
@@ -54,5 +53,3 @@ class Vector {
   int& operator[](size_t i) noexcept;
   const int& operator[](size_t i) const noexcept;
 };
-
-#endif  // DLC_CORE_VECTOR_H_
