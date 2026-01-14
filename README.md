@@ -37,6 +37,18 @@
     * also the question is asking for square, not rectangle
 * Jump game
     * base case: if a[0] + 2 > a.size() then true. if a[0]==0 and a.size() > 1 then false
+```python
+    def canJump(self, nums: List[int]) -> bool:
+        
+        @cache
+        def dp(j):
+            if nums[j]==0 and len(nums)>1:
+                return False
+            else:
+                return any(dp(j+i) for i in range(1, nums[j]+1) if j+i<len(nums))
+
+        return dp(0)
+```
 * Maximum Length of Repeated Subarray
     * make a 2d table of true and false. count longest true sequence along the main diagonal 
 * Longest Common Subsequence
