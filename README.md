@@ -38,7 +38,7 @@
 * Jump game
     * base case: if a[0] + 2 > a.size() then true. if a[0]==0 and a.size() > 1 then false
 ```python
-# working but slow
+# dp solution, O(n^2), working but slow
 
 def canJump(nums):
     @cache
@@ -48,9 +48,25 @@ def canJump(nums):
         elif j==(len(nums) - 1):
             return True
         else:
-            return any(dp(j+i) for i in range(nums[j], 0, -1) if j+i<len(nums))     # greedy or otherwise time limit exceeded
+            return any(dp(j+i) for i in range(nums[j], 0, -1) if j+i<len(nums))     # reverse or otherwise time limit exceeded
 
     return dp(0)
+
+# failed greedy atempt: [2,5,0,0]
+
+def canJump(nums: List[int]) -> bool:
+    
+    @cache
+    def dp(j):
+        if nums[j]==0 and len(nums) - j > 1:
+            return False
+        elif j==(len(nums) - 1):
+            return True
+        else:
+            return dp(j+nums[j]) if j + nums[j] < len(nums) else True
+
+    return dp(0)
+
 ```
 * Maximum Length of Repeated Subarray
     * make a 2d table of true and false. count longest true sequence along the main diagonal 
