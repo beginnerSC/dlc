@@ -38,7 +38,8 @@
 * Jump game
     * base case: if a[0] + 2 > a.size() then true. if a[0]==0 and a.size() > 1 then false
 ```python
-# answer is correct but time limit exceeded
+# working but slow
+
 def canJump(nums):
     @cache
     def dp(j):
@@ -47,7 +48,7 @@ def canJump(nums):
         elif j==(len(nums) - 1):
             return True
         else:
-            return any(dp(j+i) for i in range(1, nums[j]+1) if j+i<len(nums))
+            return any(dp(j+i) for i in range(nums[j], 0, -1) if j+i<len(nums))     # greedy or otherwise time limit exceeded
 
     return dp(0)
 ```
