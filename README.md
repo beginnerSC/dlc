@@ -72,19 +72,23 @@ def canJump(nums: List[int]) -> bool:
     * for i in range(n): if is_palindromic(s[:i]) then count += (1+countStrings(s[i:]))
     * base case: if len(s)==1: return 1
 ```python
-from functools import cache
 
-class Solution:
-    def is_palindromic(self, s):
-        return s == s[::-1]
+# accepted solution: 
+# 記下所有 palindromic substring indices (i, j), 
+# 一開始是 [(0, 0), (1, 1), ..., (0, 1), (1, 2), ...]
+# pop index (i, j) 往兩邊長，同時檢察 s[i-1]==s[j+1]
 
-    def countSubstrings(self, s: str) -> int:
-        @cache
-        def dp(i):
-            count = 0
-            for i in range(len(s)):
-                if self.is_palindromic(s[:i]):
-                    count += (1 + dp(s[i:]))
+def countSubstrings(s):
+    n = len(s)
+    q = deque([(i, i) for i in range(n)] + [(i, i+1) for i, c in enumerate(s[:-1]) if s[i]==s[i+1]])
+    count = len(q)
+    while len(q):
+        i, j = q.pop()
+        if i>0 and j<n-1 and s[i-1]==s[j+1]:
+            q.append((i-1, j+1))
+            count += 1
+
+    return count 
 ```
 
 * Maximum Product of Three Numbers
