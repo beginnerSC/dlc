@@ -73,7 +73,7 @@ def canJump(nums: List[int]) -> bool:
     * base case: if len(s)==1: return 1
 ```python
 
-# accepted solution: 
+# Accepted solution, O(n^2) time, O(n^2) space
 # 記下所有 palindromic substring indices (i, j), 
 # 一開始是 [(0, 0), (1, 1), ..., (0, 1), (1, 2), ...]
 # pop index (i, j) 往兩邊長，同時檢察 s[i-1]==s[j+1]
@@ -89,6 +89,20 @@ def countSubstrings(s):
             count += 1
 
     return count 
+
+# AI answer, O(n^2) time, O(1) space
+
+def countSubstrings(s):
+    def expand(l, r):
+        count = 0
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            count += 1
+            l -= 1
+            r += 1
+        return count
+    
+    return sum(expand(i, i) + expand(i, i + 1) for i in range(len(s)))
+
 ```
 
 * Maximum Product of Three Numbers
