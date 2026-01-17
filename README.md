@@ -3,10 +3,6 @@
 ![2026](yearly_heatmaps/2026.png?ts=10022025) 
 ![2025](yearly_heatmaps/2025.png?ts=10022025) 
 
-* Maximum subarray given $\{a_j\}$: 
-    * $m_n$: Sum of running max subarray 
-    * $s_n$: Sum of running max subarray ending $a_n$
-    * $m_n = \max(s_{n-1} + a_n, m_{n-1})$
 * Longest palindromic substring given $s = \{a_j\}$: 
     * $q_n$: Indeices `(k, l)` of the longest palindromic substring from `s[:n]`
     * $p_n$: Indecies `(i, j)` of the longest palindromic substring ending `s[n-1]`
@@ -52,7 +48,7 @@ def canJump(nums):
 
     return dp(0)
 
-# failed greedy atempt: [2,5,0,0]
+# failed greedy attempt: [2,5,0,0]
 
 def canJump(nums: List[int]) -> bool:
     
@@ -75,7 +71,7 @@ def canJump(nums: List[int]) -> bool:
 * Palindromic Substrings
     * for i in range(n): if is_palindromic(s[:i]) then count += (1+countStrings(s[i:]))
     * base case: if len(s)==1: return 1
-=========================
+```python
 from functools import cache
 
 class Solution:
@@ -89,7 +85,7 @@ class Solution:
             for i in range(len(s)):
                 if self.is_palindromic(s[:i]):
                     count += (1 + dp(s[i:]))
-==========================
+```
 
 * Maximum Product of Three Numbers
     * only the 5 numbers with the largest magnitudes matter
