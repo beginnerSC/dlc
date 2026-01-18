@@ -4,6 +4,38 @@
 ![2025](yearly_heatmaps/2025.png?ts=10022025) 
 
 * Longest palindromic substring given $s = \{a_j\}$: 
+
+```python
+
+# modified from 647 answer but result is wrong
+
+def longestPalindrome(s):
+    n = len(s)
+
+    def expand(l, r):
+        max = 0
+        while l>=0 and r<n and s[l]==s[r]: 
+            l -= 1
+            r += 1
+            max += 1
+
+        return l, r
+
+    max = 0
+    for i in range(n):
+        l, r = expand(i, i)
+        if r-l+1 > max:
+            max = r-l+1
+            res = s[l:r+1]
+
+    for i in range(n-1):
+        l, r = expand(i, i+1)
+        if r-l+1 > max:
+            max = r-l+1
+            res = s[l:r+1]
+
+    return res
+```
 ```cpp
 // modified from 647 answer but result is wrong
 
