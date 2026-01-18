@@ -104,6 +104,33 @@ def countSubstrings(s):
     return sum(expand(i, i) + expand(i, i + 1) for i in range(len(s)))
 
 ```
+```cpp
+
+// AI answer in C++
+
+int countSubstrings(string s) {
+    int n = s.size();
+    auto expand = [&](int l, int r){
+        int count = 0;
+        while (l>=0 && r<n && s[l]==s[r]) {
+            count += 1;
+            l -= 1;
+            r += 1;
+        }
+        return count;
+    };
+
+    int count = 0;
+    for (int i=0 ; i<n ; ++i)
+        count += expand(i, i);
+
+    for (int i=0 ; i<n-1 ; ++i)
+        count += expand(i, i+1);
+    
+    return count;
+}
+
+```
 
 * Maximum Product of Three Numbers
     * only the 5 numbers with the largest magnitudes matter
