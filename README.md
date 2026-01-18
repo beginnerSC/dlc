@@ -4,29 +4,33 @@
 ![2025](yearly_heatmaps/2025.png?ts=10022025) 
 
 * Longest palindromic substring given $s = \{a_j\}$: 
-    * $q_n$: Indeices `(k, l)` of the longest palindromic substring from `s[:n]`
-    * $p_n$: Indecies `(i, j)` of the longest palindromic substring ending `s[n-1]`
-    * If `s[i-1] == s[n]` then $p_{n+1} = $`(i-1, n)`. See if $q$ should be updated 
-    * Also equal to the longest common substring of `s` and `s[::-1]`
-```python
-    def longestPalindrome(self, s: str) -> str:
+```cpp
+// modified from 647 answer but result is wrong
 
-        @cache
-        def dp(s):
-            if len(s) == 1:
-                return (0, 0)
-            else: 
-                n = len(s)
-                i, j = dp(s[:-1])
-                if i>1 and j==n-2 and s[n-1]==s[i-1]:
-                    return (i-1, j+1)
-                else: 
-                    ########## ?????????????? ##########
-                    pass
+string longestPalindrome(string s) {
+    int n = s.size();
+    auto expand = [&](int l, int r){
+        int max = 0;
+        while (l>=0 && r<n && s[l]==s[r]) {
+            max += 1;
+            l -= 1;
+            r += 1;
+        }
+        return std::pair{l, r};
+    };
 
-        i, j = dp(s)
-
-        return s[i: j]
+    int max = 0;
+    std::string res = "";
+    for (int j=n-1 ; j<=n ; ++j) {
+        for (int i=0 ; i<n ; ++i) {
+            auto [l, r] = expand(i, i);
+            if (r-l+1 > max) {
+                res = s | std::views::drop(l) | std::views::take(r-l+1) | std::ranges::to<std::string>();
+            }
+        }
+    }
+    return res;
+}
 ```
 * Maximal square given the grid m
     * shape(i, j) = (k, l) if (shape(i-1, j)==(k-1, l) && shape(i, j-1)==(k, l-1) && m(i, j)==1) this is not right. should take min of shape(i-1, j).first and shape(i, j-1).first, and same for second. 
