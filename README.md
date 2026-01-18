@@ -8,6 +8,7 @@
 ```python
 
 # modified from 647 answer but result is wrong
+# output "" when s is "babad"
 
 def longestPalindrome(s):
     n = len(s)
