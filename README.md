@@ -7,62 +7,62 @@
 
 ```python
 
-# modified from 647 answer but result is wrong
-# output "" when s is "babad"
+# Accepted answer modified from 647
 
-def longestPalindrome(s):
+def longestPalindrome(self, s: str) -> str:
     n = len(s)
 
     def expand(l, r):
-        max = 0
         while l>=0 and r<n and s[l]==s[r]: 
             l -= 1
             r += 1
-            max += 1
 
-        return l, r
+        return s[l+1:r]
 
-    max = 0
+    best = ""
     for i in range(n):
-        l, r = expand(i, i)
-        if r-l+1 > max:
-            max = r-l+1
-            res = s[l:r+1]
+        odd = expand(i, i)
+        if len(odd) > len(best):
+            best = odd
 
-    for i in range(n-1):
-        l, r = expand(i, i+1)
-        if r-l+1 > max:
-            max = r-l+1
-            res = s[l:r+1]
+        even = expand(i, i+1)
+        if len(even) > len(best):
+            best = even
 
-    return res
+    return best
 ```
 ```cpp
-// modified from 647 answer but result is wrong
+// Same answer, C++ version
+// Same as 647, there is a linear time Manacher's Algorithm
+// This solution has space complexity O(n) which can be reduced to O(1) if expand doesn't return anything but changes a max_len and start of substring
+
+#include <string>
+#include <utility>
+#include <ranges>
 
 string longestPalindrome(string s) {
     int n = s.size();
     auto expand = [&](int l, int r){
-        int max = 0;
         while (l>=0 && r<n && s[l]==s[r]) {
-            max += 1;
             l -= 1;
             r += 1;
         }
-        return std::pair{l, r};
+        return s | std::views::drop(l+1) | std::views::take(r-l-1) | std::ranges::to<std::string>();
     };
 
-    int max = 0;
-    std::string res = "";
-    for (int j=n-1 ; j<=n ; ++j) {
-        for (int i=0 ; i<n ; ++i) {
-            auto [l, r] = expand(i, i);
-            if (r-l+1 > max) {
-                res = s | std::views::drop(l) | std::views::take(r-l+1) | std::ranges::to<std::string>();
-            }
+    std::string best = "";
+    
+    for (int i=0 ; i<n ; ++i) {
+        std::string odd = expand(i, i);
+        if (odd.size() > best.size()) {
+            best = std::move(odd);
+        }
+        std::string even = expand(i, i+1);
+        if (even.size() > best.size()) {
+            best = std::move(even);
         }
     }
-    return res;
+    return best;
 }
 ```
 * Maximal square given the grid m
@@ -128,6 +128,7 @@ def countSubstrings(s):
     return count 
 
 # AI answer, O(n^2) time, O(1) space
+# There is a linear time Manacher's Algorithm
 
 def countSubstrings(s):
     def expand(l, r):
