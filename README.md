@@ -113,7 +113,10 @@ def canJump(nums: List[int]) -> bool:
 # Accepted solution, O(n^2) time, O(n^2) space
 # 記下所有 palindromic substring indices (i, j), 
 # 一開始是 [(0, 0), (1, 1), ..., (0, 1), (1, 2), ...]
-# pop index (i, j) 往兩邊長，同時檢察 s[i-1]==s[j+1]
+# pop index (i, j) 往兩邊長，同時檢查 s[i-1]==s[j+1]
+
+# 這樣寫是 DFS，每次拿一個 substr 來 expand 到不能再 expand 為止
+# 如果 popleft 會變成 BFS，每次 expand 所有 substr 一步
 
 def countSubstrings(s):
     n = len(s)
@@ -174,6 +177,29 @@ int countSubstrings(string s) {
     * only the 5 numbers with the largest magnitudes matter
     * they can be 5+, 4+1-, 3+2-, ..., where + includes 0
     * case by case, it can be shown that max(M1*M2*M3, M1*m1*m2) is the answer
+
+* Valid Parentheses
+
+```python
+from collections import deque
+
+def isValid(s):     # 20
+    stack = deque()
+    close_to_open = {')': '(', ']': '[', '}': '{'}
+    
+    for c in s:
+        if c in ['(', '[', '{']:    # c is open
+            stack.append(c)
+        if c in close_to_open:      # c is a close 
+            if not stack:
+                return False
+            else:
+                top = stack.pop()
+                if top != close_to_open[c]:
+                    return False
+
+    return (not stack)     # q has to be empty in the end 
+```
 
 ## vcpkg + GoogleTest
 
