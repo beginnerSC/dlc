@@ -216,12 +216,13 @@ def productExceptSelf(nums):
     return [l*r for l, r in zip(left, right)]
 ```
 ```py 
-# My segment tree solution in 2020: 
+
+# My segment tree solution in 2020 (linear time, linear space):
 # 
 # 1. Build a b-tree with numbers on the leaves  
-# 2. Bottom up put products in the nodes: [[24], [2, 12], [1, 2, 3, 4]]
-# 3. Swap all sibling nodes: [[24], [12, 2], [2, 1, 4, 3]]
-# 4. Top down (but skip root) multiply the nodes together: [[24], [12, 2], [24, 12, 8, 6]]
+# 2. Bottom up put products in the nodes:                   [[24], [2, 12], [ 1,  2, 3, 4]]
+# 3. Swap all sibling nodes:                                [[24], [12, 2], [ 2,  1, 4, 3]]
+# 4. Top down (but skip root) multiply the nodes together:  [[24], [12, 2], [24, 12, 8, 6]]
 
 import numpy as np
 
