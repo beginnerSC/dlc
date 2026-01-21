@@ -200,7 +200,7 @@ def isValid(s):     # 20
 
     return (not stack)     # q has to be empty in the end 
 ```
-* 238. Product of Array Except Self
+* Product of Array Except Self (238)
     * The prefix/suffix pattern: Everything comes before and after the array
     * Questions related to this pattern: 42, 303, 560, 1991, 123
 
@@ -215,6 +215,34 @@ def productExceptSelf(nums):
 
     return [l*r for l, r in zip(left, right)]
 ```
+```py 
+# My segment tree solution in 2020: 
+# 
+# 1. Build a b-tree with numbers on the leaves  
+# 2. Bottom up put products in the nodes: [[24], [2, 12], [1, 2, 3, 4]]
+# 3. Swap all sibling nodes: [[24], [12, 2], [2, 1, 4, 3]]
+# 4. Top down (but skip root) multiply the nodes together: [[24], [12, 2], [24, 12, 8, 6]]
+
+import numpy as np
+
+def productExceptSelf(nums):
+    n = len(nums)
+    m = 2**(floor(log(n, 2)) + 1)
+    a = np.ones(2*m-1, dtype=int)
+    a[m-1:m-1+n] = nums
+
+    for i in range(m-2, 0, -1):
+        a[i] = a[2*i+1]*a[2*i+2]
+
+    for i in range(1, len(a), 2):
+        a[i], a[i+1] = a[i+1], a[i]
+
+    for i in range(1, len(a)):
+        a[i] *= a[(i-1)//2]
+
+    return a[m-1:m-1+n]
+```
+
 
 ## vcpkg + GoogleTest
 
