@@ -222,7 +222,7 @@ def productExceptSelf(nums):
 # 1. Build a b-tree with numbers on the leaves  
 # 2. Bottom up put products in the nodes:                   [[24], [2, 12], [ 1,  2, 3, 4]]
 # 3. Swap all sibling nodes:                                [[24], [12, 2], [ 2,  1, 4, 3]]
-# 4. Top down (but skip root) multiply the nodes together:  [[24], [12, 2], [24, 12, 8, 6]]
+# 4. Top down (but skip root) multiply the nodes together:  [[24], [12, 2], [24, 12, 8, 6]] 
 
 import numpy as np
 
