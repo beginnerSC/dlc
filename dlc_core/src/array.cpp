@@ -3,6 +3,9 @@
 #include <ranges>
 
 std::vector<int> productExceptSelf(std::vector<int>& nums) {
+
+    // 一直 push back 可能變比較慢，看最快的解答是一次初始化長度 n 的 prefix, suffix 和 res
+
     int n = nums.size();
     std::vector<int> prefix = {1}, suffix = {1};
 
