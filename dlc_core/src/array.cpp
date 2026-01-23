@@ -3,21 +3,18 @@
 #include <ranges>
 
 std::vector<int> productExceptSelf(std::vector<int>& nums) {
-
-    // 一直 push back 可能變比較慢，看最快的解答是一次初始化長度 n 的 prefix, suffix 和 res
-
     int n = nums.size();
-    std::vector<int> prefix = {1}, suffix = {1};
+    std::vector<int> prefix(n, 1), suffix(n, 1), res(n, 1);
 
     for(int i=0 ; i<n-1 ; ++i) {
-        prefix.push_back(prefix.back()*nums[i]);
+        prefix[i+1] = nums[i]*prefix[i];
     }
     for(int i=n-1 ; i>0 ; --i) {
-        suffix.push_back(suffix.back()*nums[i]);
+        suffix[i-1] = nums[i]*suffix[i];
     }
-    std::vector<int> res;
-    for (auto [p, s] : std::views::zip(prefix, suffix | std::views::reverse)) {
-        res.push_back(p * s);
+    int i=0;
+    for (auto [p, s] : std::views::zip(prefix, suffix)) {
+        res[i++] = p*s;
     }
     return res;
 }
