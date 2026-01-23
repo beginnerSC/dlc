@@ -224,6 +224,11 @@ def productExceptSelf(nums):
 # 3. Swap all sibling nodes:                                [[24], [12, 2], [ 2,  1, 4, 3]]
 # 4. Top down (but skip root) multiply the nodes together:  [[24], [12, 2], [24, 12, 8, 6]] 
 
+# This solution runs in linear time, but an seemingly equivalent divide and conquer recursion runs in O(n log n): 
+# Recursively break the array into two subarrays, say A and B, solve subproblems and compute the product of all elements for each subarray. 
+# Then multiply product of B by answer of A, and product of A by answer of B, and merge to get final result. 
+# Find a way to do the same top down multiplication in segment tree instead of the merge to make divide and conquer run in linear time too
+
 import numpy as np
 
 def productExceptSelf(nums):
