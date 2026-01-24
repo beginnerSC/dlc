@@ -3,6 +3,48 @@
 ![2026](yearly_heatmaps/2026.png?ts=10022025) 
 ![2025](yearly_heatmaps/2025.png?ts=10022025) 
 
+
+* Valid Anagram (242)
+```py
+def isAnagram(s, t):
+    return sorted(s) == sorted(t)
+
+from collections import Counter
+        
+def isAnagram1(s, t):
+    return Counter(s) == Counter(t)
+```
+* Invert binary tree (226)
+```py
+def invertTree(root):
+    if not root: 
+        return root
+    else:
+        return TreeNode(root.val, invertTree(root.right), invertTree(root.left))
+```
+* Merge two sorted lists (21): 
+```py
+    def mergeTwoLists(list1, list2):
+        dummy = cur = ListNode()
+        while list1 and list2:
+            if list1.val <= list2.val:
+                cur.next = ListNode(list1.val)
+                cur = cur.next
+                list1 = list1.next
+            else:
+                cur.next = ListNode(list2.val)
+                cur = cur.next
+                list2 = list2.next
+
+        if not list1:
+            cur.next = list2
+        
+        if not list2:
+            cur.next = list1
+        
+        return dummy.next
+```
+
 * Longest palindromic substring given $s = \{a_j\}$: 
 
 ```python
