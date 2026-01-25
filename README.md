@@ -3,7 +3,38 @@
 ![2026](yearly_heatmaps/2026.png?ts=10022025) 
 ![2025](yearly_heatmaps/2025.png?ts=10022025) 
 
+* Reverse Linked List (206)
+```py
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 
+def reverseList(head: Optional[ListNode]):
+    cur = None
+    while head:
+        cur = ListNode(head.val, cur)
+        head = head.next
+
+    return cur
+```
+* Word break (139)
+```py
+def wordBreak(s):
+    @cache
+    def dp(s):
+        if len(s) == 0:
+            return True
+        return any([dp(s[len(word):]) for word in wordDict if s.startswith(word)])
+
+    return dp(s)
+```
+* Reverse Words in a String (151)
+```py
+def reverseWords(s):
+    return ' '.join(re.sub('[ ]+', ' ', s.strip()).split(' ')[::-1])
+```
 * Valid Anagram (242)
 ```py
 def isAnagram(s, t):
@@ -24,25 +55,25 @@ def invertTree(root):
 ```
 * Merge two sorted lists (21): 
 ```py
-    def mergeTwoLists(list1, list2):
-        dummy = cur = ListNode()
-        while list1 and list2:
-            if list1.val <= list2.val:
-                cur.next = ListNode(list1.val)
-                cur = cur.next
-                list1 = list1.next
-            else:
-                cur.next = ListNode(list2.val)
-                cur = cur.next
-                list2 = list2.next
+def mergeTwoLists(list1, list2):
+    dummy = cur = ListNode()
+    while list1 and list2:
+        if list1.val <= list2.val:
+            cur.next = ListNode(list1.val)
+            cur = cur.next
+            list1 = list1.next
+        else:
+            cur.next = ListNode(list2.val)
+            cur = cur.next
+            list2 = list2.next
 
-        if not list1:
-            cur.next = list2
-        
-        if not list2:
-            cur.next = list1
-        
-        return dummy.next
+    if not list1:
+        cur.next = list2
+    
+    if not list2:
+        cur.next = list1
+    
+    return dummy.next
 ```
 
 * Longest palindromic substring given $s = \{a_j\}$: 
@@ -143,8 +174,31 @@ def canJump(nums: List[int]) -> bool:
     return dp(0)
 
 ```
-* Maximum Length of Repeated Subarray
+* Maximum Length of Repeated Subarray (718)
     * make a 2d table of true and false. count longest true sequence along the main diagonal 
+```py
+# Seemingly working but memory limit exceeded
+
+def findLength(nums1, nums2):
+    m = np.array([[1 if (n==m) else 0 for n in nums2] for m in nums1])
+    print(np.array(m))
+
+    @cache
+    def count(i, j):
+        res = 1
+        if i<len(nums1)-1 and j<len(nums2)-1 and m[i+1][j+1]==1:
+            res += count(i+1, j+1)
+            
+        return res
+
+    max_len = 0
+    for i in range(len(nums1)):
+        for j in range(len(nums2)):
+            if m[i][j]==1:
+                max_len = max(count(i, j), max_len)
+
+    return max_len
+```
 * Longest Common Subsequence
     * if a[0]==b[0] return 1+lcs(a[1:], b[1:]). Otherwise return max(lcs(a, b[1:]), lcs(a[1:], b))
 * Palindromic Substrings
