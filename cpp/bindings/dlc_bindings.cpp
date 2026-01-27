@@ -12,7 +12,7 @@
 namespace py = pybind11;
 
 PYBIND11_MODULE(dlc_core, m) {
-    m.doc() = "Dynamic Leetcode C++ algorithms module";
+    m.doc() = "dlc";
 
     // Array functions
     m.def("productExceptSelf", &productExceptSelf, 

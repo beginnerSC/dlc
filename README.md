@@ -9,20 +9,20 @@
 dlc/
 ├── cpp/                          # C++ source code
 │   ├── include/dlc_core/         # Header files
-│   │   └── tree.h
+│   │   └── array.h
 │   ├── src/                      # Implementation files
-│   │   └── tree.cpp
+│   │   └── array.cpp
 │   ├── bindings/                 # pybind11 bindings
 │   │   └── dlc_bindings.cpp
 │   └── CMakeLists.txt
 ├── src/dlc/                      # Python package
 │   ├── __init__.py
-│   └── tree.py
+│   └── array.py
 ├── tests/
 │   ├── cpp/                      # C++ tests
-│   │   └── tree_test.cpp
+│   │   └── array_test.cpp
 │   └── python/                   # Python tests
-│       └── test_tree.py
+│       └── test_array.py
 ├── examples/cpp/                 # C++ examples
 ├── yearly_heatmaps/
 ├── CMakeLists.txt               # Root CMake configuration
