@@ -8,13 +8,15 @@ file(GLOB TEST_SOURCES *.cpp)
 add_executable(dlc_core_test ${TEST_SOURCES})
 
 target_include_directories(dlc_core_test PRIVATE
-    ${CMAKE_SOURCE_DIR}/dlc_core/include
+    ${CMAKE_SOURCE_DIR}/cpp/include
 )
 
 target_link_libraries(dlc_core_test PRIVATE
-    dlc_core
+    dlc_core_static
     GTest::gtest
     GTest::gtest_main
+    # GTest::gmock 
+    # GTest::gmock_main
 )
 
 add_test(NAME dlc_core_test COMMAND dlc_core_test)

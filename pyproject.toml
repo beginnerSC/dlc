@@ -1,14 +1,22 @@
 [tool.poetry]
 name = "dlc"
 version = "0.1.0"
-description = ""
+description = "Dynamic Leetcode C++ algorithms"
 authors = ["beginnerSC <25188222+beginnerSC@users.noreply.github.com>"]
 readme = "README.md"
+packages = [{include = "dlc", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
 pre-commit = "^4.3.0" 
 jupyterlab = "^4.5.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+
+[tool.poetry.build]
+generate-setup-file = false
+script = "build.py"
 
 
 [build-system]

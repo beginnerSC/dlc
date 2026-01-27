@@ -1,0 +1,12 @@
+from itertools import accumulate
+from typing import List
+
+
+def productExceptSelf(nums: List[int]) -> List[int]:
+    """238. Product of Array Except Self"""
+    # The prefix/suffix pattern: Everything comes before and after the array
+    # Questions related to this pattern: 42, 303, 560, 1991, 123
+    left = list(accumulate([1] + nums[:-1], lambda x, y: x*y))
+    right = list(accumulate((nums[1:] + [1])[::-1], lambda x, y: x*y))[::-1]
+    
+    return [l*r for l, r in zip(left, right)]
