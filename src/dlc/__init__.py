@@ -1,9 +1,3 @@
-"""
-dlc - Dynamic Leetcode C++ algorithms
-
-A Python package with C++ extensions for various algorithms and data structures.
-"""
-
 try:
     from .dlc_core import *
 except ImportError as e:
