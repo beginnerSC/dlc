@@ -2,7 +2,7 @@
 #include <vector>
 #include <ranges>
 
-std::vector<int> productExceptSelf(std::vector<int>& nums) {
+std::vector<int> productExceptSelf(std::vector<int>& nums) {    // 238. Product of Array Except Self
     int n = nums.size();
     std::vector<int> prefix(n, 1), suffix(n, 1), res(n, 1);
 

@@ -2,6 +2,15 @@ from itertools import accumulate
 from typing import List
 
 
+def maxSubArray(nums: List[int]) -> int:
+    """53. Maximum Subarray"""
+    res = cur_max = nums[0]
+    for n in nums[1:]:
+        cur_max = max(n, cur_max + n)
+        res = max(cur_max, res)
+    return res
+
+
 def productExceptSelf(nums: List[int]) -> List[int]:
     """238. Product of Array Except Self"""
     # The prefix/suffix pattern: Everything comes before and after the array

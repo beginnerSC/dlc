@@ -3,7 +3,7 @@
 #include <unordered_map>
 #include <ranges>
 
-int maxSubArray(std::vector<int>& nums) { // https://leetcode.com/problems/maximum-subarray/description/
+int maxSubArray(std::vector<int>& nums) {   // 53. Maximum Subarray
     int res = nums[0];
     int cur_max = nums[0];
     for (int n : nums | std::views::drop(1)) {
