@@ -3,7 +3,7 @@
 #include <ranges>
 
 std::vector<int> productExceptSelf(std::vector<int>& nums) {    // 238. Product of Array Except Self
-    int n = nums.size();
+    int n = nums.size(); 
     std::vector<int> prefix(n, 1), suffix(n, 1), res(n, 1);
 
     for(int i=0 ; i<n-1 ; ++i) {
