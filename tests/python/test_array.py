@@ -1,17 +1,20 @@
 """Unit tests for array functions."""
-from dlc.array import productExceptSelf, maxSubArray
+from dlc.array import productExceptSelf, maxSubArray, lengthOfLongestSubstring, lengthOfLongestSubstring1
+
+
+class TestLengthOfLongestSubstring:
+    def test_basic_case(self):
+        for f in [lengthOfLongestSubstring, lengthOfLongestSubstring1]:
+            assert f("abcabcbb") == 3
+            assert f("bbbbb") == 1
+            assert f("pwwkew") == 3
 
 
 class TestMaxSubArray:
-    def test_max_subarray(self):
-        nums = [-2,1,-3,4,-1,2,1,-5,4]
-        assert maxSubArray(nums) == 6
-
-        nums = [1]
-        assert maxSubArray(nums) == 1
-
-        nums = [5,4,-1,7,8]
-        assert maxSubArray(nums) == 23
+    def test_basic_case(self):
+        assert maxSubArray([-2,1,-3,4,-1,2,1,-5,4]) == 6
+        assert maxSubArray([1]) == 1
+        assert maxSubArray([5,4,-1,7,8]) == 23
 
 
 class TestProductExceptSelf:
