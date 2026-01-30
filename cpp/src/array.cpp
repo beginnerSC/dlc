@@ -3,6 +3,23 @@
 #include <ranges>
 #include <unordered_map>
 #include <string>
+#include <algorithm>    // std::max
+#include <limits>
+
+int maxSubArray(std::vector<int>& nums) {   // 53. Maximum Subarray
+
+    // python 的 res = cur_max = float('-inf') 在這裡不能用，
+    // 因為一開始 cur_max = -std::numeric_limits<int>::min()，如果 n < 0，迴圈裡的 (cur_max + n) 會變成很大的正數
+
+    int res = nums[0];
+    int cur_max = nums[0];
+
+    for (int n : nums | std::views::drop(1)) {
+        cur_max = std::max(cur_max + n, n);
+        res = std::max(cur_max, res);
+    }
+    return res;
+}
 
 int lengthOfLongestSubstring(std::string s) {   // 3. Longest Substring Without Repeating Characters
 

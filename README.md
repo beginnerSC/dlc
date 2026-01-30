@@ -4,6 +4,8 @@
 ![2025](yearly_heatmaps/2025.png?ts=10022025) 
 
 * `upgrade_package.bat` has frozen wheel issue: python code change is not reflected right away (not in edit mode). In order to upgrade packages, one should just run `poetry install` which triggers `build.py`. If there is no C++ code change then no need to even run that
+* TODO: lengthOfLongestSubstring 改成不需要 take 1st char as initial values
+
 
 ## Project Structure
 

@@ -52,9 +52,9 @@ def lengthOfLongestSubstring1(s):
 
 def maxSubArray(nums: List[int]) -> int:
     """53. Maximum Subarray"""
-    res = cur_max = nums[0]
-    for n in nums[1:]:
-        cur_max = max(n, cur_max + n)
+    res = cur_max = float('-inf')
+    for n in nums:
+        cur_max = max(cur_max + n, n)
         res = max(cur_max, res)
     return res
 
