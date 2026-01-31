@@ -10,11 +10,12 @@ int maxSubArray(std::vector<int>& nums) {   // 53. Maximum Subarray
 
     // python 的 res = cur_max = float('-inf') 在這裡不能用，
     // 因為一開始 cur_max = -std::numeric_limits<int>::min()，如果 n < 0，迴圈裡的 (cur_max + n) 會變成很大的正數
+    // 下面這個樣寫確保迴圈第一圈裡 cur_max 被設成 nums[0]
 
-    int res = nums[0];
-    int cur_max = nums[0];
+    int cur_max = -1;
+    int res = nums.front(); 
 
-    for (int n : nums | std::views::drop(1)) {
+    for (int n : nums) {
         cur_max = std::max(cur_max + n, n);
         res = std::max(cur_max, res);
     }
@@ -25,19 +26,17 @@ int lengthOfLongestSubstring(std::string s) {   // 3. Longest Substring Without 
 
     // 標準作法：用雙指標 (left, right) 和一個 char to latest index map 取代 set + queue
 
-    if (s.empty()) {
-        return 0;
-    }
-    std::unordered_map<char, int> d = {{s[0], 0}};
-    int left = 0;   // in the below loop, j is right
-    int res = 1;
+    std::unordered_map<char, int> d;
+    int left = 0;
+    int res = 0;
 
-    for (int j=1 ; j<s.size() ; ++j) {
-        if (d.contains(s[j]) && d[s[j]]>=left) {
-            left = d[s[j]] + 1;
+    for (int right=0 ; right<s.size() ; ++right) {
+        char& c = s[right];
+        if (d.contains(c) && d[c]>=left) {
+            left = d[c] + 1;
         }
-        d[s[j]] = j;
-        res = std::max(j-left+1, res);
+        d[c] = right;
+        res = std::max(res, right-left+1);
     }
     return res;
 }

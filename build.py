@@ -9,7 +9,13 @@ def build():
     
     try:
         # Configure with CMake
-        subprocess.check_call(['cmake', '--preset=vcpkg'])
+        python_exe = sys.executable
+        subprocess.check_call([
+            'cmake',
+            '--preset=vcpkg',
+            f'-DPython_EXECUTABLE={python_exe}',
+            f'-DPython3_EXECUTABLE={python_exe}'
+        ])
         
         # Build in Release mode
         subprocess.check_call(['cmake', '--build', 'build', '--config', 'Release'])

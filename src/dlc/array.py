@@ -29,24 +29,20 @@ def lengthOfLongestSubstring(s: str) -> int:
 
     return res
 
-def lengthOfLongestSubstring1(s):
+def lengthOfLongestSubstring1(s: str) -> int:
     """3. Longest Substring Without Repeating Characters"""
     
     # 標準作法：用雙指標 (left, right) 和一個 char to latest index map 取代 set + queue
-
-    if not s:
-        return 0
-
-    res = 1
-    left = 0          # in the loop below j+1 is right
-    d = {s[0]: 0}
+    d = {}
+    res = left = 0
     
-    for j, c in enumerate(s[1:]):
-        if c in d and d[c] >= left:
+    for right, c in enumerate(s):
+        if (c in d) and (d[c] >= left):
             left = d[c]+1
-        d[c] = j+1
-        
-        res = max(j-left+2, res)
+
+        d[c] = right
+        res = max(res, right-left+1)
+    
     return res
 
 

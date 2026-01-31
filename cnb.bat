@@ -1,4 +1,25 @@
-cmake --preset=vcpkg
+@echo off
+setlocal
+
+set "PYEXE="
+if defined VIRTUAL_ENV (
+	set "PYEXE=%VIRTUAL_ENV%\Scripts\python.exe"
+)
+
+if not defined PYEXE (
+	for /f "delims=" %%P in ('where python') do (
+		set "PYEXE=%%P"
+		goto :found_python
+	)
+)
+
+:found_python
+if defined PYEXE (
+	cmake --preset=vcpkg -DPython_EXECUTABLE="%PYEXE%" -DPython3_EXECUTABLE="%PYEXE%"
+) else (
+	cmake --preset=vcpkg
+)
+
 @REM cmake --build build --config Release
 cmake --build build --config Debug
 .\build\tests\cpp\Debug\dlc_core_test.exe
