@@ -30,3 +30,9 @@ TEST(ArrayTest, ProductExceptSelf) {
     std::vector<int> res = {24, 12, 8, 6};
     EXPECT_EQ(productExceptSelf(nums), res);
 }
+
+TEST(ArrayTest, ProductExceptSelf1) {
+    std::vector<int> nums = {1, 2, 3, 4, 5, 6};
+    std::vector<int> res = {720, 360, 240, 180, 144, 120};
+    EXPECT_EQ(productExceptSelf1(nums), res);
+}

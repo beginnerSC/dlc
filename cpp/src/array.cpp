@@ -57,3 +57,7 @@ std::vector<int> productExceptSelf(std::vector<int>& nums) {    // 238. Product 
     }
     return res;
 }
+
+std::vector<int> productExceptSelf1(std::vector<int>& nums) {   // 238. Product of Array Except Self
+    return productExceptSelf(nums);
+}
