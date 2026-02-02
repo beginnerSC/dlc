@@ -5,6 +5,9 @@
 #include <string>
 #include <algorithm>    // std::max
 #include <limits>
+#include <cmath>
+#include <utility>      // std::swap
+#include <print>
 
 int maxSubArray(std::vector<int>& nums) {   // 53. Maximum Subarray
 
@@ -59,5 +62,29 @@ std::vector<int> productExceptSelf(std::vector<int>& nums) {    // 238. Product 
 }
 
 std::vector<int> productExceptSelf1(std::vector<int>& nums) {   // 238. Product of Array Except Self
-    return productExceptSelf(nums);
+
+    // By Segment Tree 
+    // 1. Put numbers at the leaves
+    // 2. Bottom up store product of the children in each parent node
+    // 3. Swap all siblings
+    // 4. Top down multiply the node values and the leaves will have the results
+
+    const int lg_size = ceil(log2(nums.size()));
+    auto pow2 = [](int exp){ return 1 << exp; };
+    std::vector<int> a(pow2(lg_size + 1), 1);
+
+    int j = 0;
+    for (int i=pow2(lg_size) ; i < pow2(lg_size) + nums.size() ; ++i) {
+        a[i] = nums[j++];
+    }
+    for (int i=pow2(lg_size)-1 ; i>0 ; --i) {
+        a[i] = a[2*i]*a[2*i+1];
+    }
+    for (int i=0 ; i<a.size() ; i+=2) {
+        std::swap(a[i], a[i+1]);
+    }
+    for (int i=2 ; i<a.size() ; ++i) {
+        a[i] *= a[floor(i/2)];
+    }
+    return a | std::views::drop(pow2(lg_size)) | std::views::take(nums.size()) | std::ranges::to<std::vector>();
 }

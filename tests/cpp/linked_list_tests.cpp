@@ -2,7 +2,7 @@
 #include "dlc_core/linked_list.h"
 
 
-TEST(ListedListTest, ReverseList) {
+TEST(LinkedListTest, ReverseList) {
     // Create linked list: 1 -> 2 -> 3 -> 4 -> 5
     ListNode* head = new ListNode(1);
     head->next = new ListNode(2);
