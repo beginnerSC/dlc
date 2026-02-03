@@ -6,6 +6,7 @@
 
 * TODO: Move this project's `build.py` and `cnb.bat` to cookiecutter
 * TODO: bsearch 有一種每圈迴圈多推一步的作法
+* TODO: 718. Maximum Length of Repeated Subarray C++ and Python
 
 ## Project Structure
 
