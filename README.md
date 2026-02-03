@@ -4,7 +4,8 @@
 ![2025](yearly_heatmaps/2025.png?ts=10022025) 
 
 
-* TODO: Move this project's `build.py` to cookiecutter
+* TODO: Move this project's `build.py` and `cnb.bat` to cookiecutter
+* TODO: bsearch 有一種每圈迴圈多推一步的作法
 
 ## Project Structure
 
