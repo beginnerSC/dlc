@@ -1,6 +1,15 @@
 #include <gtest/gtest.h>
 #include "dlc_core/dp.h"
 
+TEST(DpTest, FindLength) {
+    std::vector<int> nums1 = {1, 2, 3, 2, 1}; 
+    std::vector<int> nums2 = {3, 2, 1, 4, 7};
+    EXPECT_EQ(findLength(nums1, nums2), 3);
+
+    nums1 = {0, 0, 0, 0, 0}; 
+    nums2 = nums1;
+    EXPECT_EQ(findLength(nums1, nums2), 5);
+}
 
 TEST(DpTest, HouseRobber) {
     std::vector<int> nums1 = {1, 2, 3, 1};

@@ -3,6 +3,31 @@
 #include <unordered_map>
 #include <ranges>
 
+int findLength(std::vector<int>& nums1, std::vector<int>& nums2) {
+
+    std::vector<std::vector<int>> m(nums1.size(), std::vector<int>(nums2.size()));
+
+    for (int i=0 ; i<nums1.size() ; ++i) {
+        for (int j=0 ; j<nums2.size() ; ++j) {
+            m[i][j] = (nums1[i]==nums2[j]) ? 1 : 0;
+        }
+    }
+    for (int i=1 ; i<nums1.size() ; ++i) {
+        for (int j=1 ; j<nums2.size() ; ++j) {
+            if (m[i][j] == 1) {
+                m[i][j] += m[i-1][j-1];
+            }
+        }
+    }
+    int max = 0;
+    for (int i=0 ; i<nums1.size() ; ++i) {
+        for (int j=0 ; j<nums2.size() ; ++j) {
+            max = std::max(max, m[i][j]);
+        }
+    }
+    
+    return max;
+}
 
 int rob(std::vector<int>& nums) {   // https://leetcode.com/problems/house-robber/
     int pre = 0;

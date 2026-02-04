@@ -1,6 +1,18 @@
 from functools import cache
 from typing import List
+import numpy as np
 
+def findLength(nums1: List[int], nums2: List[int]) -> int:
+    """718. Maximum Length of Repeated Subarray"""
+    
+    m = np.array([[1 if (n==m) else 0 for n in nums2] for m in nums1])
+
+    for i in range(1, len(nums1)):
+        for j in range(1, len(nums2)):
+            if m[i, j] == 1:
+                m[i, j] += m[i-1, j-1]
+
+    return int(np.max(m))
 
 def wordBreak(s: str, wordDict: List[str]) -> bool:
     """139. Word Break"""
@@ -11,7 +23,6 @@ def wordBreak(s: str, wordDict: List[str]) -> bool:
         return any([dp(s[len(word):]) for word in wordDict if s.startswith(word)])
     
     return dp(s)
-
 
 def canJump(nums: List[int]) -> bool:
     """55. Jump Game"""

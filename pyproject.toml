@@ -10,6 +10,7 @@ packages = [{include = "dlc", from = "src"}]
 python = "^3.12"
 pre-commit = "^4.3.0" 
 jupyterlab = "^4.5.1"
+numpy = "^2.4.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
