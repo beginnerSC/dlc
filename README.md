@@ -7,6 +7,7 @@
 * TODO: Move this project's `build.py` and `cnb.bat` to cookiecutter
 * TODO: bsearch 有一種每圈迴圈多推一步的作法
 * TODO: 718. 2D DP can be done with 1D vector
+    * There seems to be a $O(N \log N)$ solution. AI mentioned binary search + rolling hash, and sliding window
 
 ## Project Structure
 
