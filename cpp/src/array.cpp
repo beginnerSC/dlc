@@ -9,6 +9,9 @@
 #include <utility>      // std::swap
 #include <print>
 
+namespace rg = std::ranges;
+namespace vs = std::views;
+
 int maxSubArray(std::vector<int>& nums) {   // 53. Maximum Subarray
 
     // python 的 res = cur_max = float('-inf') 在這裡不能用，
@@ -55,7 +58,7 @@ std::vector<int> productExceptSelf(std::vector<int>& nums) {    // 238. Product 
         suffix[i-1] = nums[i]*suffix[i];
     }
     int i=0;
-    for (auto [p, s] : std::views::zip(prefix, suffix)) {
+    for (auto [p, s] : vs::zip(prefix, suffix)) {
         res[i++] = p*s;
     }
     return res;
@@ -86,5 +89,5 @@ std::vector<int> productExceptSelf1(std::vector<int>& nums) {   // 238. Product 
     for (int i=2 ; i<a.size() ; ++i) {
         a[i] *= a[floor(i/2)];
     }
-    return a | std::views::drop(pow2(lg_size)) | std::views::take(nums.size()) | std::ranges::to<std::vector>();
+    return a | vs::drop(pow2(lg_size)) | vs::take(nums.size()) | rg::to<std::vector>();
 }

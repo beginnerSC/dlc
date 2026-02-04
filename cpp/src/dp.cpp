@@ -3,6 +3,9 @@
 #include <unordered_map>
 #include <ranges>
 
+namespace rg = std::ranges;
+namespace vs = std::views;
+
 int findLength(std::vector<int>& nums1, std::vector<int>& nums2) {
 
     std::vector<std::vector<int>> m(nums1.size(), std::vector<int>(nums2.size()));
@@ -57,7 +60,7 @@ int coinChange(std::vector<int>& coins, int amount) {   // https://leetcode.com/
                 num_coins.push_back(sub + 1);
             }
         }
-        dp[amount] = std::ranges::min(num_coins);
+        dp[amount] = rg::min(num_coins);
         return dp[amount];
     }
 }
