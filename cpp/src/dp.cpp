@@ -2,11 +2,45 @@
 #include <algorithm>
 #include <unordered_map>
 #include <ranges>
+#include <string>
 
 namespace rg = std::ranges;
 namespace vs = std::views;
 
-int findLength(std::vector<int>& nums1, std::vector<int>& nums2) {
+int longestCommonSubsequence(std::string text1, std::string text2) {    // 1143. Longest Common Subsequence
+    std::vector<std::vector<int>> m(text1.size(), std::vector<int>(text2.size(), 0));
+
+    for (int i=0 ; i<text1.size() ; ++i) {
+        if (text1[i] == text2[0]) {
+            m[i][0] = 1;
+        }
+        if (i>0) {
+            m[i][0] = std::max(m[i][0], m[i-1][0]);
+        }
+    }
+    for (int j=0 ; j<text2.size() ; ++j) {
+        if (text1[0] == text2[j]) {
+            m[0][j] = 1;
+        }
+        if (j>0) {
+            m[0][j] = std::max(m[0][j], m[0][j-1]);
+        }
+    }
+    int res = std::max(m[0][text2.size()-1], m[text1.size()-1][0]);
+    for (int i=1 ; i<text1.size() ; ++i) {
+        for (int j=1 ; j<text2.size() ; ++j) {
+            if (text1[i] == text2[j]) {
+                m[i][j] = m[i-1][j-1] + 1;
+                res = std::max(m[i][j], res);
+            } else {
+                m[i][j] = std::max(m[i][j-1], m[i-1][j]);
+            }
+        }
+    }
+    return res;
+}
+
+int findLength(std::vector<int>& nums1, std::vector<int>& nums2) {  // 718. Maximum Length of Repeated Subarray
 
     std::vector<std::vector<int>> m(nums1.size(), std::vector<int>(nums2.size()));
 
@@ -32,7 +66,7 @@ int findLength(std::vector<int>& nums1, std::vector<int>& nums2) {
     return max;
 }
 
-int rob(std::vector<int>& nums) {   // https://leetcode.com/problems/house-robber/
+int rob(std::vector<int>& nums) {   // 198. House Robber
     int pre = 0;
     int cur = nums.front();
     for (size_t i = 1; i < nums.size(); ++i) {
@@ -43,7 +77,7 @@ int rob(std::vector<int>& nums) {   // https://leetcode.com/problems/house-robbe
     return cur;
 }
 
-int coinChange(std::vector<int>& coins, int amount) {   // https://leetcode.com/problems/coin-change/
+int coinChange(std::vector<int>& coins, int amount) {   // 322. Coin Change
     static std::unordered_map<int, int> dp;
     if (amount < 0) {
         return -1;
@@ -65,7 +99,7 @@ int coinChange(std::vector<int>& coins, int amount) {   // https://leetcode.com/
     }
 }
 
-int climbStairs(int n) {   // https://leetcode.com/problems/climbing-stairs/
+int climbStairs(int n) {   // 70. Climbing Stairs
   if (n < 3){
     return n;
   } else {

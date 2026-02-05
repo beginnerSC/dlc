@@ -2,6 +2,28 @@ from functools import cache
 from typing import List
 import numpy as np
 
+def longestCommonSubsequence(text1: str, text2: str) -> int:
+    """1143. Longest Common Subsequence"""
+
+    m = np.array([[(1 if c==d else 0) for c in text2] for d in text1])
+
+    for i in range(1, len(text1)):
+        m[i, 0] = max(m[i, 0], m[i-1, 0])
+
+    for j in range(1, len(text2)):
+        m[0, j] = max(m[0, j], m[0, j-1])
+
+    res = max(m[-1, 0], m[0, -1])
+    for i in range(1, len(text1)):
+        for j in range(1, len(text2)):
+            if text1[i] == text2[j]:
+                m[i, j] = m[i-1, j-1] + 1
+                res = max(m[i, j], res)
+            else:
+                m[i, j] = max(m[i, j-1], m[i-1, j])
+
+    return int(res)
+
 def findLength(nums1: List[int], nums2: List[int]) -> int:
     """718. Maximum Length of Repeated Subarray"""
     

@@ -1,6 +1,11 @@
 """Unit tests for dynamic programming functions."""
-from dlc.dp import wordBreak, canJump, findLength
+from dlc.dp import wordBreak, canJump, findLength, longestCommonSubsequence
 
+class TestLongestCommonSubsequence:
+    def test_basic_case(self):
+        assert longestCommonSubsequence("abcde", "ace") == 3
+        assert longestCommonSubsequence("abc", "abc") == 3
+        assert longestCommonSubsequence("abc", "def") == 0
 
 class TestFindLength:
     def test_basic_case(self):
@@ -11,7 +16,6 @@ class TestFindLength:
         nums1 = [0,0,0,0,0]
         nums2 = [0,0,0,0,0]
         assert findLength(nums1, nums2) == 5
-
 
 class TestWordBreak:
     def test_basic_case(self):
@@ -31,7 +35,6 @@ class TestWordBreak:
         s = "applepenapple"
         wordDict = ["apple", "pen"]
         assert wordBreak(s, wordDict) == True
-
 
 class TestCanJump:
     def test_can_reach_end(self):

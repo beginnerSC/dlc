@@ -1,6 +1,12 @@
 #include <gtest/gtest.h>
 #include "dlc_core/dp.h"
 
+TEST(DpTest, LongestCommonSubsequence) {
+    EXPECT_EQ(longestCommonSubsequence("abcde", "ace"), 3);
+    EXPECT_EQ(longestCommonSubsequence("abc", "abc"), 3);
+    EXPECT_EQ(longestCommonSubsequence("abc", "def"), 0);
+}
+
 TEST(DpTest, FindLength) {
     std::vector<int> nums1 = {1, 2, 3, 2, 1}; 
     std::vector<int> nums2 = {3, 2, 1, 4, 7};
