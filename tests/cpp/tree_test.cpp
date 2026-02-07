@@ -1,6 +1,18 @@
 #include <gtest/gtest.h>
 #include "dlc_core/tree.h"
 
+TEST(TreeTest, invertTree) {
+    TreeNode* root = new TreeNode(4, 
+        new TreeNode(2, new TreeNode(1), new TreeNode(3)), 
+        new TreeNode(7, new TreeNode(6), new TreeNode(9)));
+
+    TreeNode* inverted = new TreeNode(4, 
+        new TreeNode(7, new TreeNode(9), new TreeNode(6)), 
+        new TreeNode(2, new TreeNode(3), new TreeNode(1)));
+    
+    EXPECT_EQ(levelOrder(invertTree(root)), levelOrder(inverted));
+}
+
 TEST(TreeTest, LevelOrder) {
     TreeNode* root = new TreeNode(3, new TreeNode(9), new TreeNode(20, new TreeNode(15), new TreeNode(7)));
     // TreeNode n15(15), n7(7), n9(9), n20(20, &n15, &n7), root(3, &n9, &n20);  // alternative one line tree construction

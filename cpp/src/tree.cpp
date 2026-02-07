@@ -2,6 +2,14 @@
 #include <deque>
 #include "dlc_core/tree.h"
 
+TreeNode* invertTree(TreeNode* root) {
+    if (!root) {
+        return root;
+    } else {
+        return (new TreeNode(root->val, invertTree(root->right), invertTree(root->left)));
+    }
+}
+
 std::vector<std::vector<int>> levelOrder(TreeNode* root) {
 
   if (root==nullptr) return {};
