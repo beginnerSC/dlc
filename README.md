@@ -1,11 +1,11 @@
-# dlc
+# Daily LeetCode Challenge
 
 ![2026](yearly_heatmaps/2026.png?ts=10022025) 
 ![2025](yearly_heatmaps/2025.png?ts=10022025) 
 
+This is a repo to store my solutions to LeetCode questions, in both C++ and Python. 
 
 * TODO
-    * Move this project's `build.py` and `cnb.bat` to cookiecutter
     * Bsearch 有一種每圈迴圈多推一步的作法
     * Many 2D DP can be done with 1D vector
     * 718 has a $O(N \log N)$ solution. AI mentioned binary search + rolling hash, and sliding window
