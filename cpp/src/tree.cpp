@@ -2,7 +2,7 @@
 #include <deque>
 #include "dlc_core/tree.h"
 
-TreeNode* invertTree(TreeNode* root) {
+TreeNode* invertTree(TreeNode* root) {  // 226. Invert Binary Tree
     if (!root) {
         return root;
     } else {
@@ -10,7 +10,7 @@ TreeNode* invertTree(TreeNode* root) {
     }
 }
 
-std::vector<std::vector<int>> levelOrder(TreeNode* root) {
+std::vector<std::vector<int>> levelOrder(TreeNode* root) {  // 102. Binary Tree Level Order Traversal
 
   if (root==nullptr) return {};
 

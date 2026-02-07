@@ -1,24 +1,20 @@
 import re
 from collections import Counter, deque
 
-
 def reverseWords(s: str) -> str:
     """151. Reverse Words in a String"""
 
     return ' '.join(re.sub('[ ]+', ' ', s.strip()).split(' ')[::-1])
-
 
 def isAnagram(s: str, t: str) -> bool:
     """242. Valid Anagram"""
 
     return sorted(s) == sorted(t)
 
-
 def isAnagram_counter(s: str, t: str) -> bool:
     """242. Valid Anagram (Counter)"""
 
     return Counter(s) == Counter(t)
-
 
 def longestPalindrome(s: str) -> str:
     """5. Longest Palindromic Substring"""
@@ -45,7 +41,6 @@ def longestPalindrome(s: str) -> str:
     
     return best
 
-
 def countSubstrings(s: str) -> int:
     """647. Palindromic Substrings"""
     # Palindromic Substrings
@@ -71,7 +66,6 @@ def countSubstrings(s: str) -> int:
         return count
 
     return sum(expand(i, i) + expand(i, i + 1) for i in range(len(s)))
-
 
 def isValid(s: str) -> bool:
     """20. Valid Parentheses"""

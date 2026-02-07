@@ -2,7 +2,7 @@
 #include <stack>
 #include <unordered_map>
 
-bool isValid(std::string s) {
+bool isValid(std::string s) {   // 20. Valid Parentheses
     std::stack<char> stack;
     std::unordered_map<char, char> close_to_open = {{')', '('}, {']', '['}, {'}', '{'}};
 

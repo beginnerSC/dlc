@@ -2,7 +2,7 @@
 #include <vector>
 #include <unordered_map>
 
-std::pair<int, int> twoSum(std::vector<int> nums, int target) {
+std::pair<int, int> twoSum(std::vector<int> nums, int target) {     // 1. Two Sum
     std::unordered_map<int, int> d;
     for (int i=0 ; i<nums.size() ; ++i) {
         if (d.contains(target - nums[i])) {

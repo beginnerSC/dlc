@@ -45,7 +45,6 @@ def lengthOfLongestSubstring1(s: str) -> int:
     
     return res
 
-
 def maxSubArray(nums: List[int]) -> int:
     """53. Maximum Subarray"""
     res = cur_max = float('-inf')
@@ -53,7 +52,6 @@ def maxSubArray(nums: List[int]) -> int:
         cur_max = max(cur_max + n, n)
         res = max(cur_max, res)
     return res
-
 
 def productExceptSelf(nums: List[int]) -> List[int]:
     """238. Product of Array Except Self"""

@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <functional>
 
-int maximumProduct(std::vector<int>& nums) {    // https://leetcode.com/problems/maximum-product-of-three-numbers/description/
+int maximumProduct(std::vector<int>& nums) {    // 628. Maximum Product of Three Numbers
 
     std::partial_sort(nums.begin(), nums.begin() + 3, nums.end(), std::greater<int>());
 
