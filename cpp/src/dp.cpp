@@ -10,7 +10,8 @@ namespace vs = std::views;
 
 bool wordBreak(std::string s, std::vector<std::string>& wordDict) {     // 139. Word Break
 
-    // This solution looks fine but if submitted on leetcode it fails. A bug of leetcode?
+    // This solution is fine but if submitted on leetcode it fails because of the local static memo. 
+    // Leet code runs multiple test cases in the same thread and the memo cached from previous test case will break the ones after
     
     static std::unordered_map<std::string, bool> memo = {{"", true}};
 

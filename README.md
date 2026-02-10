@@ -9,7 +9,10 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
     * Bsearch 有一種每圈迴圈多推一步的作法
     * Many (all?) 2D DP can be done with 1D vector
     * 718 Maximum Length of Repeated Subarray has a $O(N \log N)$ solution. AI mentioned binary search + rolling hash, and sliding window
-    * 139 Word Break in C++ string view version: The current version makes copies which is a waste of time
+    * 139 Word Break in C++: 
+        * Use string view version: The current version makes copies which is a waste of time. 
+        * Hashing strings are also a waste of time
+        * `s.substr()` instead of `rg::to<std::string>()`
 
 ## Project Structure
 
