@@ -13,6 +13,7 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
         * Use string view version: The current version makes copies which is a waste of time. 
         * Hashing strings are also a waste of time
         * `s.substr()` instead of `rg::to<std::string>()`
+        * Keep notes on C++ lambda recursion: Lambda 在定義完成前，其變數名稱（如 auto func）對 Lambda 內部是不可見的。可以用 `std::function`
 
 ## Project Structure
 
