@@ -1,6 +1,34 @@
 #include <gtest/gtest.h>
 #include "dlc_core/dp.h"
 
+TEST(DpTest, WordBreakAB) {
+    // Test basic word break case.
+    std::string s = "a";
+    std::vector<std::string> wordDict = {"b"};
+    EXPECT_EQ(wordBreak(s, wordDict), false);
+}
+
+TEST(DpTest, WordBreakBasicCase) {
+    // Test basic word break case.
+    std::string s = "leetcode";
+    std::vector<std::string> wordDict = {"leet", "code"};
+    EXPECT_EQ(wordBreak(s, wordDict), true);
+}
+
+TEST(DpTest, WordBreakNoBreakPossible) {
+    // Test when word break is not possible.
+    std::string s = "catsandog";
+    std::vector<std::string> wordDict = {"cats", "dog", "sand", "and", "cat"};
+    EXPECT_EQ(wordBreak(s, wordDict), false);
+}
+
+TEST(DpTest, WordBreakReusableWords) {
+    // Test with reusable words.
+    std::string s = "applepenapple";
+    std::vector<std::string> wordDict = {"apple", "pen"};
+    EXPECT_EQ(wordBreak(s, wordDict), true);
+}
+
 TEST(DpTest, LongestCommonSubsequence) {
     EXPECT_EQ(longestCommonSubsequence("abcde", "ace"), 3);
     EXPECT_EQ(longestCommonSubsequence("abc", "abc"), 3);

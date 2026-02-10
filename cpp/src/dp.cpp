@@ -3,9 +3,36 @@
 #include <unordered_map>
 #include <ranges>
 #include <string>
+#include <functional>
 
 namespace rg = std::ranges;
 namespace vs = std::views;
+
+bool wordBreak(std::string s, std::vector<std::string>& wordDict) {     // 139. Word Break
+
+    // This solution looks fine but if submitted on leetcode it fails. A bug of leetcode?
+    
+    static std::unordered_map<std::string, bool> memo = {{"", true}};
+
+    std::function<bool(const std::string& s)> dp = [&](const std::string& s){
+        if (memo.contains(s)) {
+            return memo[s];
+        } else {
+            bool res = false;
+            for (const std::string& word : wordDict) {
+                if (s.starts_with(word)) {
+                    res = dp(s | vs::drop(word.size()) | rg::to<std::string>());
+                    if (res) {
+                        break;
+                    }
+                }
+            }
+            memo[s] = res;
+            return res;
+        }
+    };
+    return dp(s);
+}
 
 int longestCommonSubsequence(std::string text1, std::string text2) {    // 1143. Longest Common Subsequence
     std::vector<std::vector<int>> dp(text1.size(), std::vector<int>(text2.size(), 0));

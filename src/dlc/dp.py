@@ -44,7 +44,7 @@ def wordBreak(s: str, wordDict: List[str]) -> bool:
     def dp(s):
         if len(s) == 0:
             return True
-        return any([dp(s[len(word):]) for word in wordDict if s.startswith(word)])
+        return any(dp(s[len(word):]) for word in wordDict if s.startswith(word))
     
     return dp(s)
 
