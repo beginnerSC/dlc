@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 
+bool wordBreak1(std::string s, std::vector<std::string>& wordDict);
 bool wordBreak(std::string s, std::vector<std::string>& wordDict);
 int longestCommonSubsequence(std::string text1, std::string text2);
 int findLength(std::vector<int>& nums1, std::vector<int>& nums2);

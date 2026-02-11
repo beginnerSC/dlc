@@ -6,6 +6,7 @@ TEST(DpTest, WordBreakAB) {
     std::string s = "a";
     std::vector<std::string> wordDict = {"b"};
     EXPECT_EQ(wordBreak(s, wordDict), false);
+    EXPECT_EQ(wordBreak1(s, wordDict), false);
 }
 
 TEST(DpTest, WordBreakBasicCase) {
@@ -13,6 +14,7 @@ TEST(DpTest, WordBreakBasicCase) {
     std::string s = "leetcode";
     std::vector<std::string> wordDict = {"leet", "code"};
     EXPECT_EQ(wordBreak(s, wordDict), true);
+    EXPECT_EQ(wordBreak1(s, wordDict), true);
 }
 
 TEST(DpTest, WordBreakNoBreakPossible) {
@@ -20,6 +22,7 @@ TEST(DpTest, WordBreakNoBreakPossible) {
     std::string s = "catsandog";
     std::vector<std::string> wordDict = {"cats", "dog", "sand", "and", "cat"};
     EXPECT_EQ(wordBreak(s, wordDict), false);
+    EXPECT_EQ(wordBreak1(s, wordDict), false);
 }
 
 TEST(DpTest, WordBreakReusableWords) {
@@ -27,6 +30,7 @@ TEST(DpTest, WordBreakReusableWords) {
     std::string s = "applepenapple";
     std::vector<std::string> wordDict = {"apple", "pen"};
     EXPECT_EQ(wordBreak(s, wordDict), true);
+    EXPECT_EQ(wordBreak1(s, wordDict), true);
 }
 
 TEST(DpTest, LongestCommonSubsequence) {

@@ -8,6 +8,33 @@
 namespace rg = std::ranges;
 namespace vs = std::views;
 
+bool wordBreak1(std::string s, std::vector<std::string>& wordDict) {     // 139. Word Break
+
+    // hasing index version WIP
+    // compiler warning too
+    
+    static std::unordered_map<int, bool> memo = {{s.size(), true}};
+
+    std::function<bool(int j)> dp = [&](int j){
+        if (memo.contains(j)) {
+            return memo[j];
+        } else {
+            bool res = false;
+            for (const std::string& word : wordDict) {
+                if (s.substr(j).starts_with(word)) {
+                    res = dp(j + word.size());
+                    if (res) {
+                        break;
+                    }
+                }
+            }
+            memo[j] = res;
+            return res;
+        }
+    };
+    return dp(0);
+}
+
 bool wordBreak(std::string s, std::vector<std::string>& wordDict) {     // 139. Word Break
 
     // This solution is fine but if submitted on leetcode it fails because of the local static memo. 
