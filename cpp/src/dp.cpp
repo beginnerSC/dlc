@@ -10,12 +10,12 @@ namespace vs = std::views;
 
 bool wordBreak1(std::string s, std::vector<std::string>& wordDict) {     // 139. Word Break
 
-    // hasing index version WIP
-    // compiler warning too
-    
-    static std::unordered_map<int, bool> memo = {{s.size(), true}};
+    // Hasing index version with substr. rg::to makes copies which is a waste of time 
+    // Use size_t instead of int to avoid compiler warning
 
-    std::function<bool(int j)> dp = [&](int j){
+    std::unordered_map<size_t, bool> memo = {{s.size(), true}};
+
+    std::function<bool(size_t j)> dp = [&](size_t j){
         if (memo.contains(j)) {
             return memo[j];
         } else {
@@ -36,11 +36,7 @@ bool wordBreak1(std::string s, std::vector<std::string>& wordDict) {     // 139.
 }
 
 bool wordBreak(std::string s, std::vector<std::string>& wordDict) {     // 139. Word Break
-
-    // This solution is fine but if submitted on leetcode it fails because of the local static memo. 
-    // Leet code runs multiple test cases in the same thread and the memo cached from previous test case will break the ones after
-    
-    static std::unordered_map<std::string, bool> memo = {{"", true}};
+    std::unordered_map<std::string, bool> memo = {{"", true}};
 
     std::function<bool(const std::string& s)> dp = [&](const std::string& s){
         if (memo.contains(s)) {
@@ -133,7 +129,7 @@ int rob(std::vector<int>& nums) {   // 198. House Robber
 }
 
 int coinChange(std::vector<int>& coins, int amount) {   // 322. Coin Change
-    static std::unordered_map<int, int> dp;
+    std::unordered_map<int, int> dp;
     if (amount < 0) {
         return -1;
     } else if (amount == 0) {   // trace the code without this branch
