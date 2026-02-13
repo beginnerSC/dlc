@@ -8,6 +8,28 @@
 namespace rg = std::ranges;
 namespace vs = std::views;
 
+int maximalSquare(std::vector<std::vector<char>>& matrix) {     // 221. Maximal Square
+    int m = matrix.size();
+    int n = matrix[0].size();
+    std::vector<std::vector<int>> dp(m, std::vector<int>(n));
+
+    int max_len = 0;
+    for (int i=0 ; i<m ; ++i) {
+        for (int j=0 ; j<n ; ++j) {
+            if (i==0 || j==0) {
+                dp[i][j] = (matrix[i][j]=='0') ? 0 : 1;
+            } else if (matrix[i][j] == '0'){
+                dp[i][j] = 0;
+            } else {
+                dp[i][j] = 1 + std::min({dp[i-1][j], dp[i][j-1], dp[i-1][j-1]});
+            }
+            max_len = std::max(dp[i][j], max_len);
+        }
+    }
+    return max_len*max_len;
+}
+
+
 bool wordBreak1(std::string s, std::vector<std::string>& wordDict) {     // 139. Word Break
 
     // Hasing index version with substr. rg::to makes copies which is a waste of time 

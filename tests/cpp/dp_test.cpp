@@ -1,6 +1,27 @@
 #include <gtest/gtest.h>
 #include "dlc_core/dp.h"
 
+TEST(DpTest, MaximalSquare) {
+    std::vector<std::vector<char>> mat1, mat2, mat3;
+
+    mat1 = {
+        {'1','0','1','0','0'},
+        {'1','0','1','1','1'},
+        {'1','1','1','1','1'},
+        {'1','0','0','1','0'}
+    };
+    EXPECT_EQ(maximalSquare(mat1), 4);
+
+    mat2 = {
+        {'0','1'},
+        {'1','0'}
+    };
+    EXPECT_EQ(maximalSquare(mat2), 1);
+
+    mat3 = {{'0'}};
+    EXPECT_EQ(maximalSquare(mat3), 0);
+}
+
 TEST(DpTest, WordBreakAB) {
     // Test basic word break case.
     std::string s = "a";
