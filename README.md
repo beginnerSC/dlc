@@ -12,7 +12,7 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
     * 139 Word Break in C++: 
         * Keep notes on C++ lambda recursion: Lambda 在定義完成前，其變數名稱（如 auto func）對 Lambda 內部是不可見的。可以用 `std::function` 
         * Local static is not needed! 
-    * 200 Number of Islands 可以讓 dfs 函數直接回傳 1 再加起來，但要把島塗成不同顏色
+    * 200 Number of Islands 可以讓 dfs 函數直接回傳 1 再加起來，但要把島塗成不同顏色 
 
 ## Project Structure
 
