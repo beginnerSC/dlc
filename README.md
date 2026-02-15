@@ -10,7 +10,7 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
     * Many (all?) 2D DP can be done with 1D vector
     * 718 Maximum Length of Repeated Subarray has a $O(N \log N)$ solution. AI mentioned binary search + rolling hash, and sliding window
     * 139 Word Break in C++: 
-        * Keep notes on C++ lambda recursion: Lambda 在定義完成前，其變數名稱（如 auto func）對 Lambda 內部是不可見的。可以用 `std::function`
+        * Keep notes on C++ lambda recursion: Lambda 在定義完成前，其變數名稱（如 auto func）對 Lambda 內部是不可見的。可以用 `std::function` 
         * Local static is not needed! 
 
 ## Project Structure
