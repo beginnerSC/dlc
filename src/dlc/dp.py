@@ -2,6 +2,16 @@ from functools import cache
 from typing import List
 import numpy as np
 
+def uniquePaths(m: int, n: int) -> int:
+    """62. Unique Paths"""
+    dp = [[1 for _ in range(n)] for _ in range(m)]
+
+    for i in range(1, m):
+        for j in range(1, n):
+            dp[i][j] = dp[i-1][j] + dp[i][j-1]
+        
+    return dp[-1][-1]
+
 def longestCommonSubsequence(text1: str, text2: str) -> int:
     """1143. Longest Common Subsequence"""
 

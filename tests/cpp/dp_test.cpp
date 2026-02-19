@@ -1,6 +1,18 @@
 #include <gtest/gtest.h>
 #include "dlc_core/dp.h"
 
+TEST(DpTest, UniquePaths) {
+    // Test case 1: m = 3, n = 7
+    EXPECT_EQ(uniquePaths(3, 7), 28);
+    
+    // Test case 2: m = 3, n = 2
+    EXPECT_EQ(uniquePaths(3, 2), 3);
+    
+    // Additional test cases
+    EXPECT_EQ(uniquePaths(1, 1), 1);  // Single cell grid
+    EXPECT_EQ(uniquePaths(2, 2), 2);  // 2x2 grid
+}
+
 TEST(DpTest, MaximalSquare) {
     std::vector<std::vector<char>> mat1, mat2, mat3;
 

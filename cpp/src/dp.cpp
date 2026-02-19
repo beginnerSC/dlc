@@ -8,6 +8,18 @@
 namespace rg = std::ranges;
 namespace vs = std::views;
 
+int uniquePaths(int m, int n) {     // 62. Unique Paths
+
+    std::vector<std::vector<int>> dp(m, std::vector<int>(n));
+
+    for (int i=0 ; i<m ; ++i) {
+        for (int j=0 ; j<n ; ++j) {
+            dp[i][j] = (i==0 || j==0) ? 1 : (dp[i-1][j] + dp[i][j-1]);
+        }
+    }
+    return dp[m-1][n-1];
+}
+
 int maximalSquare(std::vector<std::vector<char>>& matrix) {     // 221. Maximal Square
     int m = matrix.size();
     int n = matrix[0].size();

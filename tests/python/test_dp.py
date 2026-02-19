@@ -1,5 +1,22 @@
 """Unit tests for dynamic programming functions."""
-from dlc.dp import wordBreak, canJump, findLength, longestCommonSubsequence
+from dlc.dp import wordBreak, canJump, findLength, longestCommonSubsequence, uniquePaths
+
+class TestUniquePaths:
+    def test_basic_case_1(self):
+        """Test case: m = 3, n = 7, expecting 28 unique paths."""
+        assert uniquePaths(3, 7) == 28
+    
+    def test_basic_case_2(self):
+        """Test case: m = 3, n = 2, expecting 3 unique paths."""
+        assert uniquePaths(3, 2) == 3
+    
+    def test_single_cell(self):
+        """Test with a 1x1 grid."""
+        assert uniquePaths(1, 1) == 1
+    
+    def test_small_grid(self):
+        """Test with a 2x2 grid."""
+        assert uniquePaths(2, 2) == 2
 
 class TestLongestCommonSubsequence:
     def test_basic_case(self):
