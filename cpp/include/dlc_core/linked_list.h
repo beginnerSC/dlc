@@ -6,4 +6,5 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
+ListNode* mergeTwoLists(ListNode* list1, ListNode* list2);
 ListNode* reverseList(ListNode* head);

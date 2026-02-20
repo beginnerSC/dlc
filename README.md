@@ -14,9 +14,9 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
         * Local static is not needed! 
     * 200 Number of Islands 可以讓 dfs 函數直接回傳 1 再加起來，但要把島塗成不同顏色 
     * Total unique LeetCode problems: 25
-        * Python only: 5, 21, 55, 151, 242, 647
+        * Python only: 5, 55, 151, 242, 647
         * C++ only: 70, 102, 198, 221, 322, 628
-        * Both: 1, 3, 20, 53, 62, 139, 200, 206, 226, 238, 704, 718, 1143
+        * Both: 1, 3, 20, 21, 53, 62, 139, 200, 206, 226, 238, 704, 718, 1143
 
 ## Project Structure
 
