@@ -15,9 +15,11 @@ def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
 
 def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
     """21. Merge Two Sorted Lists"""
+
     dummy = cur = ListNode()
+
     while list1 and list2:
-        if list1.val <= list2.val:
+        if list1.val < list2.val:
             cur.next = ListNode(list1.val)
             cur = cur.next
             list1 = list1.next
@@ -26,10 +28,5 @@ def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optio
             cur = cur.next
             list2 = list2.next
 
-    if not list1:
-        cur.next = list2
-    
-    if not list2:
-        cur.next = list1
-    
+    cur.next = list1 if list1 else list2
     return dummy.next
