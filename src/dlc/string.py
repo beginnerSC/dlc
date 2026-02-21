@@ -11,7 +11,7 @@ def isAnagram(s: str, t: str) -> bool:
 
     return sorted(s) == sorted(t)
 
-def isAnagram_counter(s: str, t: str) -> bool:
+def isAnagram1(s: str, t: str) -> bool:
     """242. Valid Anagram (Counter)"""
 
     return Counter(s) == Counter(t)

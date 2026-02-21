@@ -1,6 +1,6 @@
 """Unit tests for string functions."""
 from dlc.string import (
-    reverseWords, isAnagram, isAnagram_counter, 
+    reverseWords, isAnagram, isAnagram1, 
     longestPalindrome, countSubstrings, isValid
 )
 
@@ -23,12 +23,12 @@ class TestIsAnagram:
     def test_valid_anagram(self):
         """Test valid anagram."""
         assert isAnagram("anagram", "nagaram") == True
-        assert isAnagram_counter("anagram", "nagaram") == True
+        assert isAnagram1("anagram", "nagaram") == True
     
     def test_not_anagram(self):
         """Test invalid anagram."""
         assert isAnagram("rat", "car") == False
-        assert isAnagram_counter("rat", "car") == False
+        assert isAnagram1("rat", "car") == False
     
     def test_different_lengths(self):
         """Test strings of different lengths."""
