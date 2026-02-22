@@ -20,3 +20,12 @@ TEST(StringTest, IsAnagram1) {
     EXPECT_TRUE(isAnagram1("listen", "silent"));
     EXPECT_TRUE(isAnagram1("triangle", "integral"));
 }
+
+TEST(StringTest, ReverseWords) {
+    EXPECT_EQ(reverseWords("the sky is blue"), "blue is sky the");
+    EXPECT_EQ(reverseWords("  hello world  "), "world hello");
+    EXPECT_EQ(reverseWords("a good   example"), "example good a");
+    EXPECT_EQ(reverseWords("a"), "a");
+    EXPECT_EQ(reverseWords(""), "");
+    EXPECT_EQ(reverseWords("   "), "");
+}

@@ -14,9 +14,9 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
         * Local static is not needed! 
     * 200 Number of Islands 可以讓 dfs 函數直接回傳 1 再加起來，但要把島塗成不同顏色 
     * Total unique LeetCode problems: 25
-        * Python only: 5, 55, 151, 647
+        * Python only: 5, 55, 647
         * C++ only: 70, 102, 198, 221, 322, 628
-        * Both: 1, 3, 20, 21, 53, 62, 139, 200, 206, 226, 238, 242, 704, 718, 1143
+        * Both: 1, 3, 20, 21, 53, 62, 139, 151, 200, 206, 226, 238, 242, 704, 718, 1143
 
 ## Project Structure
 
@@ -72,6 +72,29 @@ upgrade_package.bat
 ## Leetcode Solutions
 
 Python solutions are in `src/dlc/` with tests in `tests/python/`.
+
+* Cleanest AI solution to 151 (Reverse Words in a String) using sstream
+```cpp
+#include <sstream>
+#include <string>
+#include <algorithm>
+
+string reverseWords(string s) {
+    stringstream ss(s);
+    string word, result = "";
+    
+    // Extract words one by one
+    while (ss >> word) {
+        if (result == "") {
+            result = word;
+        } else {
+            // Prepend the new word to reverse the order
+            result = word + " " + result;
+        }
+    }
+    return result;
+}
+```
 
 * Longest palindromic substring given $s = \{a_j\}$: 
 ```cpp
