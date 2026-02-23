@@ -5,7 +5,37 @@
 
 namespace rg = std::ranges;
 
-std::string reverseWords(std::string s) {
+std::string longestPalindrome(std::string s) {  // 5. Longest Palindromic Substring
+    auto expand = [&](int i, int j){
+        int max_len = 0;
+        while (i>=0 && j<s.size() && s[i]==s[j]) {
+            max_len = j-i+1;
+            i -= 1;
+            j += 1;
+        }
+        return std::pair<int, int>({i+1, max_len});
+    };
+
+    int best_pos = 0, max_len = 0;
+
+    for (size_t i=0 ; i<s.size() ; ++i) {
+        auto [pos, len] = expand(i, i);
+        if (len > max_len) {
+            best_pos = pos;
+            max_len = len;
+        }
+    }
+    for (size_t i=0 ; i<s.size() ; ++i) {
+        auto [pos, len] = expand(i, i+1);
+        if (len > max_len) {
+            best_pos = pos;
+            max_len = len;
+        }
+    }
+    return s.substr(best_pos, max_len);
+}
+
+std::string reverseWords(std::string s) {   // 151. Reverse Words in a String
     std::vector<std::string> words = {""};
     int n_words = 1;
 

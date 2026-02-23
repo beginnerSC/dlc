@@ -73,6 +73,32 @@ upgrade_package.bat
 
 Python solutions are in `src/dlc/` with tests in `tests/python/`.
 
+* Clean AI solution to 5 (Longest Palindromic Substring) which modify `best_pos` and `max_len` inside the helper function (and yeah, naming the variables `l`, `r` is better than my `i`, `j`)
+```cpp
+std::string longestPalindrome(std::string s) {
+    int n = s.length();
+    int best_pos = 0, max_len = 0;
+
+    // A helper to update the global bests
+    auto check = [&](int L, int R) {
+        while (L >= 0 && R < n && s[L] == s[R]) {
+            if (R - L + 1 > max_len) {
+                best_pos = L;
+                max_len = R - L + 1;
+            }
+            L--; R++;
+        }
+    };
+
+    for (int i = 0; i < n; ++i) {
+        check(i, i);     // Odd expansion
+        check(i, i + 1); // Even expansion
+    }
+
+    return s.substr(best_pos, max_len);
+}
+```
+
 * Cleanest AI solution to 151 (Reverse Words in a String) using sstream
 ```cpp
 #include <sstream>

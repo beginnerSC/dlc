@@ -29,3 +29,23 @@ TEST(StringTest, ReverseWords) {
     EXPECT_EQ(reverseWords(""), "");
     EXPECT_EQ(reverseWords("   "), "");
 }
+
+TEST(StringTest, LongestPalindrome) {
+    // Test case 1: "babad" can return either "bab" or "aba"
+    std::string result1 = longestPalindrome("babad");
+    EXPECT_TRUE(result1 == "bab" || result1 == "aba");
+    EXPECT_EQ(result1.length(), 3);
+    
+    // Test case 2: "cbbd" should return "bb"
+    EXPECT_EQ(longestPalindrome("cbbd"), "bb");
+    
+    // Additional edge cases
+    EXPECT_EQ(longestPalindrome("a"), "a");
+    EXPECT_EQ(longestPalindrome("ac"), "a");
+    EXPECT_EQ(longestPalindrome("racecar"), "racecar");
+    EXPECT_EQ(longestPalindrome("noon"), "noon");
+    
+    // Another case with even-length palindrome
+    std::string result2 = longestPalindrome("abba");
+    EXPECT_EQ(result2, "abba");
+}
