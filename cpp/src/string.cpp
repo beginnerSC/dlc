@@ -6,31 +6,25 @@
 namespace rg = std::ranges;
 
 std::string longestPalindrome(std::string s) {  // 5. Longest Palindromic Substring
-    auto expand = [&](int i, int j){
-        int max_len = 0;
-        while (i>=0 && j<s.size() && s[i]==s[j]) {
-            max_len = j-i+1;
-            i -= 1;
-            j += 1;
-        }
-        return std::pair<int, int>({i+1, max_len});
-    };
-
     int best_pos = 0, max_len = 0;
 
-    for (size_t i=0 ; i<s.size() ; ++i) {
-        auto [pos, len] = expand(i, i);
-        if (len > max_len) {
-            best_pos = pos;
-            max_len = len;
+    auto check = [&](int l, int r){
+
+        while (l>=0 && r<s.size() && s[l]==s[r]) {
+            l -= 1;
+            r += 1;
         }
-    }
-    for (size_t i=0 ; i<s.size() ; ++i) {
-        auto [pos, len] = expand(i, i+1);
-        if (len > max_len) {
-            best_pos = pos;
-            max_len = len;
+        l += 1;
+        r -= 1;
+
+        if (r-l+1 > max_len) {    // In AI's clean solution, this block is on the top of the while loop, so that l += 1 and r -= 1 can be avoided
+            best_pos = l;
+            max_len = r-l+1;
         }
+    };
+    for (size_t i=0 ; i<s.size() ; ++i) {
+        check(i, i);
+        check(i, i+1);
     }
     return s.substr(best_pos, max_len);
 }
