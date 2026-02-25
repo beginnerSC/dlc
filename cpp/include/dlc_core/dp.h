@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 
+bool canJump(std::vector<int>& nums);
 int uniquePaths(int m, int n);
 int maximalSquare(std::vector<std::vector<char>>& matrix);
 bool wordBreak1(std::string s, std::vector<std::string>& wordDict);

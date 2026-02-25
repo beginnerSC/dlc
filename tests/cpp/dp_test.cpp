@@ -1,6 +1,26 @@
 #include <gtest/gtest.h>
 #include "dlc_core/dp.h"
 
+TEST(DpTest, CanJump) {
+    // Test case 1: Can reach the end
+    std::vector<int> nums1 = {2, 3, 1, 1, 4};
+    EXPECT_EQ(canJump(nums1), true);
+    
+    // Test case 2: Cannot reach the end (blocked by zero)
+    std::vector<int> nums2 = {3, 2, 1, 0, 4};
+    EXPECT_EQ(canJump(nums2), false);
+    
+    // Additional test cases
+    std::vector<int> nums3 = {0};  // Single element (already at end)
+    EXPECT_EQ(canJump(nums3), true);
+    
+    std::vector<int> nums4 = {2, 0, 0};  // Can jump over zeros
+    EXPECT_EQ(canJump(nums4), true);
+    
+    std::vector<int> nums5 = {1, 0, 1, 0};  // Cannot reach the end
+    EXPECT_EQ(canJump(nums5), false);
+}
+
 TEST(DpTest, UniquePaths) {
     // Test case 1: m = 3, n = 7
     EXPECT_EQ(uniquePaths(3, 7), 28);

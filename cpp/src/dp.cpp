@@ -8,6 +8,25 @@
 namespace rg = std::ranges;
 namespace vs = std::views;
 
+bool canJump(std::vector<int>& nums) {
+    size_t size = nums.size();
+    std::function<bool(size_t)> dp = [&](size_t j){
+        if (j!=size-1 && nums[j]==0) {
+            return false;
+        } else if (j!=size-1 && (nums[j]+j) >= size-1) {
+            return true;
+        } else {
+            for (size_t i=j ; i>0 ; --j) {
+                if (dp(j+i)) {
+                    return dp(j+i);
+                }
+            }
+            return false;
+        }
+    };
+    return dp(0);
+}
+
 int uniquePaths(int m, int n) {     // 62. Unique Paths
 
     std::vector<std::vector<int>> dp(m, std::vector<int>(n));
