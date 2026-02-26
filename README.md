@@ -6,7 +6,7 @@
 This is a repo to store my solutions to LeetCode questions, in both C++ and Python. 
 
 * TODO
-    * `DpTest.CanJump` in C++ is failing
+    * 5 Jump Game C++ Time Limit Exceeded on `[1]*10000`
     * Bsearch 有一種每圈迴圈多推一步的作法
     * Many (all?) 2D DP can be done with 1D vector
     * 718 Maximum Length of Repeated Subarray has a $O(N \log N)$ solution. AI mentioned binary search + rolling hash, and sliding window

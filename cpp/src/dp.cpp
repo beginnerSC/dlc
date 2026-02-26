@@ -8,15 +8,18 @@
 namespace rg = std::ranges;
 namespace vs = std::views;
 
-bool canJump(std::vector<int>& nums) {
+bool canJump(std::vector<int>& nums) {      // 55. Jump Game
+
+    // Time Limit Exceeded on [1]*10000
+
     size_t size = nums.size();
     std::function<bool(size_t)> dp = [&](size_t j){
         if (j!=size-1 && nums[j]==0) {
             return false;
-        } else if (j!=size-1 && (nums[j]+j) >= size-1) {
+        } else if (j==size-1 || (j!=size-1 && (nums[j]+j) >= size-1)) {
             return true;
         } else {
-            for (size_t i=j ; i>0 ; --j) {
+            for (size_t i=nums[j] ; i>0 ; --i) {
                 if (dp(j+i)) {
                     return dp(j+i);
                 }
