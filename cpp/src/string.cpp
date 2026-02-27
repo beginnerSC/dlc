@@ -10,11 +10,9 @@ int countSubstrings(std::string s) {     // 647. Palindromic Substrings
     int ending_si = 1;
     for (int i=1 ; i<s.size() ; ++i) {
         int tmp = 1;
-        for (int j=i-2 ; j>=std::max(i-1-ending_si, 0) ; --j) {
+        for (int j=i-1 ; j>=std::max(i-ending_si-1, 0) ; --j) {
             if (s[j]==s[i]) {
                 ++tmp;
-            } else {
-                break;
             }
         }
         ending_si = tmp;
