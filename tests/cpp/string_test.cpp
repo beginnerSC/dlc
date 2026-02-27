@@ -49,3 +49,34 @@ TEST(StringTest, LongestPalindrome) {
     std::string result2 = longestPalindrome("abba");
     EXPECT_EQ(result2, "abba");
 }
+
+TEST(StringTest, CountSubstrings) {
+    // Test case 1: "abc" - only 3 single character palindromes
+    EXPECT_EQ(countSubstrings("abc"), 3);
+    
+    // Test case 2: "aaa" - multiple palindromic substrings
+    // "a", "a", "a", "aa", "aa", "aaa" = 6 total
+    EXPECT_EQ(countSubstrings("aaa"), 6);
+    
+    // Additional test cases
+    // Single character
+    EXPECT_EQ(countSubstrings("a"), 1);
+    
+    // Two identical characters: "a", "a", "aa" = 3
+    EXPECT_EQ(countSubstrings("aa"), 3);
+    
+    // Two different characters: "a", "b" = 2
+    EXPECT_EQ(countSubstrings("ab"), 2);
+    
+    // "aba" has: "a", "b", "a", "aba" = 4 palindromes
+    EXPECT_EQ(countSubstrings("aba"), 4);
+    
+    // "racecar" has multiple palindromes including the whole string
+    EXPECT_EQ(countSubstrings("racecar"), 10);
+    
+    // "noon" has: "n", "o", "o", "n", "oo", "noon" = 6 palindromes
+    EXPECT_EQ(countSubstrings("noon"), 6);
+    
+    // All different characters
+    EXPECT_EQ(countSubstrings("abcd"), 4);
+}

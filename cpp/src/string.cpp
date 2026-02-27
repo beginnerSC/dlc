@@ -5,6 +5,24 @@
 
 namespace rg = std::ranges;
 
+int countSubstrings(std::string s) {     // 647. Palindromic Substrings
+    int count = 1;
+    int ending_si = 1;
+    for (int i=1 ; i<s.size() ; ++i) {
+        int tmp = 1;
+        for (int j=i-2 ; j>=std::max(i-1-ending_si, 0) ; --j) {
+            if (s[j]==s[i]) {
+                ++tmp;
+            } else {
+                break;
+            }
+        }
+        ending_si = tmp;
+        count += ending_si;
+    }
+    return count;
+}
+
 std::string longestPalindrome(std::string s) {  // 5. Longest Palindromic Substring
     int best_pos = 0, max_len = 0;
 
