@@ -18,7 +18,7 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
     * Total unique LeetCode problems: 25
         * Python only: 55
         * C++ only: 70, 102, 198, 221, 322, 628
-        * Both: 1, 3, 5, 20, 21, 53, 62, 139, 151, 200, 206, 226, 238, 242, 647, 704, 718, 1143
+        * Both: 1, 3, 5, 20, 21, 53, 62, 139, 151, 200, 206, 226, 238, 242, 647, 704, 718, 1143 
 
 ## Project Structure
 
