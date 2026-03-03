@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 
+int fib(int n);
 bool canJump(std::vector<int>& nums);
 int uniquePaths(int m, int n);
 int maximalSquare(std::vector<std::vector<char>>& matrix);

@@ -8,6 +8,22 @@
 namespace rg = std::ranges;
 namespace vs = std::views;
 
+int fib(int n) {                                // 509. Fibonacci Number
+    std::unordered_map<int, int> memo = {};
+
+    std::function<int(int)> dp = [&](int n){
+        if (!memo.contains(n)) {
+            if (n < 2) {
+                memo[n] = n;
+            } else {
+                memo[n] = dp(n-1) + dp(n-2);
+            }
+        }
+        return memo[n];
+    };
+    return dp(n);
+}
+
 bool canJump(std::vector<int>& nums) {      // 55. Jump Game
 
     // Time Limit Exceeded on [1]*10000

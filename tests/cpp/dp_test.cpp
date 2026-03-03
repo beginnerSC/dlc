@@ -127,3 +127,27 @@ TEST(DpTest, CoinChange) {
 TEST(DpTest, climbStairs) {
     EXPECT_EQ(climbStairs(5), 8);
 }
+
+TEST(DpTest, Fib) {
+    // Base cases
+    EXPECT_EQ(fib(0), 0);
+    EXPECT_EQ(fib(1), 1);
+    
+    // Small values
+    EXPECT_EQ(fib(2), 1);
+    EXPECT_EQ(fib(3), 2);
+    EXPECT_EQ(fib(4), 3);
+    EXPECT_EQ(fib(5), 5);
+    
+    // Larger values
+    EXPECT_EQ(fib(6), 8);
+    EXPECT_EQ(fib(7), 13);
+    EXPECT_EQ(fib(8), 21);
+    EXPECT_EQ(fib(9), 34);
+    EXPECT_EQ(fib(10), 55);
+    
+    // Even larger values to test memoization
+    EXPECT_EQ(fib(15), 610);
+    EXPECT_EQ(fib(20), 6765);
+    EXPECT_EQ(fib(25), 75025);
+}
