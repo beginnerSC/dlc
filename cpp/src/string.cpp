@@ -6,24 +6,18 @@
 namespace rg = std::ranges;
 
 int countSubstrings(std::string s) {     // 647. Palindromic Substrings
-    int count = 1;
-    int max_len_ending_si = 1;
-    for (int i=1 ; i<s.size() ; ++i) {
-        int tmp = 1;
+    int count = 0;
+    int max_len_ending_si = 0;
+
+    for (int i=0 ; i<s.size() ; ++i) {
+        int tmp = 0;
         for (int j=i ; j>=std::max(i-max_len_ending_si-1, 0) ; --j) {
             if (s[j]==s[i]) {
                 ++count;
-            }                 
-            if (j==i-max_len_ending_si-1) {
-                if (s[j]==s[i]) {
-                    max_len_ending_si += 2;
-                } else if (s[j+1]==s[i]) {
-                    max_len_ending_si += 1;
-                } else {
-                    max_len_ending_si = 1;
-                }
+                ++tmp;
             }
         }
+        max_len_ending_si = tmp;
     }
     return count;
 }

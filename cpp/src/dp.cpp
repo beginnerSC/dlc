@@ -79,7 +79,6 @@ int maximalSquare(std::vector<std::vector<char>>& matrix) {     // 221. Maximal 
     return max_len*max_len;
 }
 
-
 bool wordBreak1(std::string s, std::vector<std::string>& wordDict) {     // 139. Word Break
 
     // Hasing index version with substr. rg::to makes copies which is a waste of time 
