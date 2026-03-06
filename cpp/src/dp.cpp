@@ -58,6 +58,18 @@ int uniquePaths(int m, int n) {     // 62. Unique Paths
     return dp[m-1][n-1];
 }
 
+int uniquePaths1(int m, int n) {    // 62. Unique Paths
+
+    std::vector<int> dp(n, 1);
+
+    for (int i=0 ; i<m-1 ; ++i) {
+        for (int j=1 ; j<n ; ++j) {
+            dp[j] += dp[j-1];
+        }
+    }
+    return dp[n-1];
+}
+
 int maximalSquare(std::vector<std::vector<char>>& matrix) {     // 221. Maximal Square
     int m = matrix.size();
     int n = matrix[0].size();
