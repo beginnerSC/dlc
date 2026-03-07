@@ -45,42 +45,42 @@ Vector::Vector(Vector&& other) : a_(other.a_), size_(other.size_), capacity_(oth
 Vector::~Vector() { delete[] a_; }
 
 // Iterator constructor
-Vector::iterator::iterator(int* ptr) noexcept : ptr_(ptr) {}
+Vector::Iterator::Iterator(int* ptr) noexcept : ptr_(ptr) {}
 
 // Iterator dereference operator
-int& Vector::iterator::operator*() const noexcept { return *ptr_; }
+int& Vector::Iterator::operator*() const noexcept { return *ptr_; }
 
 // Iterator arrow operator
-int* Vector::iterator::operator->() const noexcept { return ptr_; }
+int* Vector::Iterator::operator->() const noexcept { return ptr_; }
 
 // Iterator pre-increment
-Vector::iterator& Vector::iterator::operator++() noexcept {
+Vector::Iterator& Vector::Iterator::operator++() noexcept {
   ptr_++;
   return *this;
 }
 
 // Iterator post-increment
-Vector::iterator Vector::iterator::operator++(int) noexcept {
-  iterator tmp = *this;
+Vector::Iterator Vector::Iterator::operator++(int) noexcept {
+  Iterator tmp = *this;
   ptr_++;
   return tmp;
 }
 
 // Iterator equality
-bool Vector::iterator::operator==(iterator other) const noexcept {
+bool Vector::Iterator::operator==(Iterator other) const noexcept {
   return (ptr_ == other.ptr_);
 }
 
 // Iterator inequality
-bool Vector::iterator::operator!=(iterator other) const noexcept {
+bool Vector::Iterator::operator!=(Iterator other) const noexcept {
   return (ptr_ != other.ptr_);
 }
 
 // Iterator begin
-Vector::iterator Vector::begin() const noexcept { return iterator(a_); }
+Vector::Iterator Vector::begin() const noexcept { return Iterator(a_); }
 
 // Iterator end
-Vector::iterator Vector::end() const noexcept { return iterator(a_ + size_); }
+Vector::Iterator Vector::end() const noexcept { return Iterator(a_ + size_); }
 
 // Print method
 void Vector::Print() {

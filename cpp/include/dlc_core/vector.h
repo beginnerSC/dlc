@@ -22,22 +22,22 @@ class Vector {
   ~Vector();
 
   // Iterator class
-  class iterator {
+  class Iterator {
     int* ptr_;
 
    public:
-    explicit iterator(int* ptr) noexcept;
+    explicit Iterator(int* ptr) noexcept;
     int& operator*() const noexcept;
     int* operator->() const noexcept;
-    iterator& operator++() noexcept;
-    iterator operator++(int) noexcept;
-    bool operator==(iterator other) const noexcept;
-    bool operator!=(iterator other) const noexcept;
+    Iterator& operator++() noexcept;
+    Iterator operator++(int) noexcept;
+    bool operator==(Iterator other) const noexcept;
+    bool operator!=(Iterator other) const noexcept;
   };
 
   // Iterator methods
-  iterator begin() const noexcept;
-  iterator end() const noexcept;
+  Iterator begin() const noexcept;
+  Iterator end() const noexcept;
 
   // Public methods
   void Print();

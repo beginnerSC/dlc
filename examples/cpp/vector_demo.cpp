@@ -4,7 +4,7 @@ int main() {
   size_t size = 3;
   Vector v(size);
 
-  for (Vector::iterator it = v.begin(); it != v.end(); it++) {
+  for (Vector::Iterator it = v.begin(); it != v.end(); it++) {
     std::cout << *it << ", ";
   }
   std::cout << std::endl;
