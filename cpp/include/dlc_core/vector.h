@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DLC_CORE_VECTOR_H
+#define DLC_CORE_VECTOR_H
 
 #include <stdexcept>
 #include <iostream>
@@ -32,7 +33,6 @@ class Vector {
     iterator operator++(int) noexcept;
     bool operator==(iterator other) const noexcept;
     bool operator!=(iterator other) const noexcept;
-    int* GetPtr() const noexcept;
   };
 
   // Iterator methods
@@ -53,3 +53,5 @@ class Vector {
   int& operator[](size_t i) noexcept;
   const int& operator[](size_t i) const noexcept;
 };
+
+#endif

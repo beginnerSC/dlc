@@ -68,16 +68,13 @@ Vector::iterator Vector::iterator::operator++(int) noexcept {
 
 // Iterator equality
 bool Vector::iterator::operator==(iterator other) const noexcept {
-  return (ptr_ == other.GetPtr());
+  return (ptr_ == other.ptr_);
 }
 
 // Iterator inequality
 bool Vector::iterator::operator!=(iterator other) const noexcept {
-  return (ptr_ != other.GetPtr());
+  return (ptr_ != other.ptr_);
 }
-
-// Iterator GetPtr
-int* Vector::iterator::GetPtr() const noexcept { return ptr_; }
 
 // Iterator begin
 Vector::iterator Vector::begin() const noexcept { return iterator(a_); }

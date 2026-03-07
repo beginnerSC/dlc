@@ -14,10 +14,11 @@ int countSubstrings(std::string s) {     // 647. Palindromic Substrings
         for (int j=i ; j>=std::max(i-max_len_ending_si-1, 0) ; --j) {
             if (s[j]==s[i]) {
                 ++count;
-                ++tmp;
+                tmp = i-j+1;
             }
         }
         max_len_ending_si = tmp;
+        // tmp = 0;
     }
     return count;
 }
