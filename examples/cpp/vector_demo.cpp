@@ -1,4 +1,5 @@
 #include "dlc_core/vector.h"
+#include <iostream>
 
 int main() {
   size_t size = 3;

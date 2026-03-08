@@ -1,4 +1,3 @@
-#include "dlc_core/array.h"
 #include <vector>
 
 int search(std::vector<int>& nums, int target) {    // 704. Binary Search
