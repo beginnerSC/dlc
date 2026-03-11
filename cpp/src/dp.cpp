@@ -8,6 +8,22 @@
 namespace rg = std::ranges;
 namespace vs = std::views;
 
+int fib1(int n) {        // 509. Fibonacci Number
+    if (n < 2) {
+        return n;
+    } else {
+        int prev = 0;
+        int cur = 1;
+
+        for (int i=0 ; i<n-1 ; ++i) {
+            int tmp = cur;
+            cur += prev;
+            prev = tmp;
+        }
+        return cur;
+    }
+}
+
 int fib(int n) {                                // 509. Fibonacci Number
     std::unordered_map<int, int> memo = {};
 

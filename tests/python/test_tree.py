@@ -1,5 +1,5 @@
 """Unit tests for tree functions."""
-from dlc.tree import TreeNode, invertTree
+from dlc.tree import TreeNode, invertTree, levelOrder
 
 
 def tree_to_array(root, level_order=True):
@@ -67,3 +67,34 @@ class TestInvertTree:
         root = array_to_tree([1])
         result = invertTree(root)
         assert tree_to_array(result) == [1]
+
+
+class TestLevelOrder:
+    def test_basic(self):
+        """[3,9,20,null,null,15,7] -> [[3],[9,20],[15,7]]"""
+        root = array_to_tree([3, 9, 20, None, None, 15, 7])
+        assert levelOrder(root) == [[3], [9, 20], [15, 7]]
+
+    def test_single_node(self):
+        """Single node returns one level."""
+        root = array_to_tree([1])
+        assert levelOrder(root) == [[1]]
+
+    def test_empty_tree(self):
+        """Empty tree returns empty list."""
+        assert levelOrder(None) == []
+
+    def test_left_skewed(self):
+        """Left-skewed tree: each level has one node."""
+        root = TreeNode(1, TreeNode(2, TreeNode(3)))
+        assert levelOrder(root) == [[1], [2], [3]]
+
+    def test_right_skewed(self):
+        """Right-skewed tree: each level has one node."""
+        root = TreeNode(1, None, TreeNode(2, None, TreeNode(3)))
+        assert levelOrder(root) == [[1], [2], [3]]
+
+    def test_complete_tree(self):
+        """Complete binary tree with 7 nodes, 3 levels."""
+        root = array_to_tree([1, 2, 3, 4, 5, 6, 7])
+        assert levelOrder(root) == [[1], [2, 3], [4, 5, 6, 7]]

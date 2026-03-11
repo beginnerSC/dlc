@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 
+int fib1(int n);
 int fib(int n);
 bool canJump(std::vector<int>& nums);
 int uniquePaths(int m, int n);

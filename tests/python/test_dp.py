@@ -1,5 +1,24 @@
 """Unit tests for dynamic programming functions."""
-from dlc.dp import wordBreak, canJump, findLength, longestCommonSubsequence, uniquePaths
+from dlc.dp import wordBreak, canJump, findLength, longestCommonSubsequence, uniquePaths, fib
+
+class TestFib:
+    def test_base_case_zero(self):
+        assert fib(0) == 0
+
+    def test_base_case_one(self):
+        assert fib(1) == 1
+
+    def test_small_values(self):
+        assert fib(2) == 1
+        assert fib(3) == 2
+        assert fib(4) == 3
+        assert fib(5) == 5
+
+    def test_larger_value(self):
+        assert fib(10) == 55
+
+    def test_known_value(self):
+        assert fib(20) == 6765
 
 class TestUniquePaths:
     def test_basic_case_1(self):

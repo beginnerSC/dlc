@@ -154,4 +154,26 @@ TEST(DpTest, Fib) {
     EXPECT_EQ(fib(15), 610);
     EXPECT_EQ(fib(20), 6765);
     EXPECT_EQ(fib(25), 75025);
+
+    // Base cases
+    EXPECT_EQ(fib1(0), 0);
+    EXPECT_EQ(fib1(1), 1);
+    
+    // Small values
+    EXPECT_EQ(fib1(2), 1);
+    EXPECT_EQ(fib1(3), 2);
+    EXPECT_EQ(fib1(4), 3);
+    EXPECT_EQ(fib1(5), 5);
+    
+    // Larger values
+    EXPECT_EQ(fib1(6), 8);
+    EXPECT_EQ(fib1(7), 13);
+    EXPECT_EQ(fib1(8), 21);
+    EXPECT_EQ(fib1(9), 34);
+    EXPECT_EQ(fib1(10), 55);
+    
+    // Even larger values to test memoization
+    EXPECT_EQ(fib1(15), 610);
+    EXPECT_EQ(fib1(20), 6765);
+    EXPECT_EQ(fib1(25), 75025);
 }

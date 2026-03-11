@@ -2,6 +2,12 @@ from functools import cache
 from typing import List
 import numpy as np
 
+@cache
+def fib(n: int) -> int:
+    """509. Fibonacci Number"""
+    
+    return n if (n<2) else (fib(n-1) + fib(n-2))
+
 def uniquePaths(m: int, n: int) -> int:
     """62. Unique Paths"""
     dp = [[1 for _ in range(n)] for _ in range(m)]
