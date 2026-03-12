@@ -2,6 +2,18 @@ from functools import cache
 from typing import List
 import numpy as np
 
+def rob(nums: List[int]) -> int:
+    """198. House Robber"""
+
+    if len(nums)==1:
+        return nums[0]
+    else:
+        m = [0, nums[0]] + [0 for _ in nums[1:]]
+        for j, n in enumerate(nums[1:]):
+            m[j+2] = max(m[j] + n, m[j+1])
+
+        return m[-1]
+
 @cache
 def fib(n: int) -> int:
     """509. Fibonacci Number"""

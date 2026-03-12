@@ -1,5 +1,5 @@
 """Unit tests for dynamic programming functions."""
-from dlc.dp import wordBreak, canJump, findLength, longestCommonSubsequence, uniquePaths, fib
+from dlc.dp import wordBreak, canJump, findLength, longestCommonSubsequence, uniquePaths, fib, rob
 
 class TestFib:
     def test_base_case_zero(self):
@@ -88,3 +88,25 @@ class TestCanJump:
     def test_zero_at_start(self):
         """Test with zero at start."""
         assert canJump([0, 1]) == False
+
+
+class TestRob:
+    def test_basic_case(self):
+        """Canonical House Robber example."""
+        assert rob([1, 2, 3, 1]) == 4
+
+    def test_second_basic_case(self):
+        """Another common House Robber example."""
+        assert rob([2, 7, 9, 3, 1]) == 12
+
+    def test_single_house(self):
+        """Single house should return its own value."""
+        assert rob([5]) == 5
+
+    def test_two_houses(self):
+        """Choose the maximum of two houses."""
+        assert rob([2, 1]) == 2
+
+    def test_non_adjacent_best(self):
+        """Best answer may skip multiple local maxima."""
+        assert rob([2, 1, 1, 2]) == 4
