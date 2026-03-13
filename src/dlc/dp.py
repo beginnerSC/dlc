@@ -2,6 +2,22 @@ from functools import cache
 from typing import List
 import numpy as np
 
+def maximalSquare(matrix: List[List[str]]) -> int:
+    """221. Maximal Square"""
+    
+    m, n = len(matrix), len(matrix[0])
+    matrix = [[int(matrix[i][j]) for j in range(n)] for i in range(m)]
+
+    max_len = max([matrix[0][j] for j in range(n)] + [matrix[i][0] for i in range(m)])
+    for i in range(1, m):
+        for j in range(1, n):
+            if matrix[i][j] == 1:
+                matrix[i][j] = min(matrix[i-1][j], matrix[i][j-1], matrix[i-1][j-1]) + 1
+                max_len = max(max_len, matrix[i][j])
+
+    return max_len**2
+
+
 def rob(nums: List[int]) -> int:
     """198. House Robber"""
 

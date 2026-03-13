@@ -1,5 +1,5 @@
 """Unit tests for dynamic programming functions."""
-from dlc.dp import wordBreak, canJump, findLength, longestCommonSubsequence, uniquePaths, fib, rob
+from dlc.dp import wordBreak, canJump, findLength, longestCommonSubsequence, uniquePaths, fib, rob, maximalSquare
 
 class TestFib:
     def test_base_case_zero(self):
@@ -110,3 +110,32 @@ class TestRob:
     def test_non_adjacent_best(self):
         """Best answer may skip multiple local maxima."""
         assert rob([2, 1, 1, 2]) == 4
+
+
+class TestMaximalSquare:
+    def test_example_case(self):
+        matrix = [
+            ["1", "0", "1", "0", "0"],
+            ["1", "0", "1", "1", "1"],
+            ["1", "1", "1", "1", "1"],
+            ["1", "0", "0", "1", "0"],
+        ]
+        assert maximalSquare(matrix) == 4
+
+    def test_small_mixed_case(self):
+        matrix = [["0", "1"], ["1", "0"]]
+        assert maximalSquare(matrix) == 1
+
+    def test_single_zero(self):
+        assert maximalSquare([["0"]]) == 0
+
+    def test_single_one(self):
+        assert maximalSquare([["1"]]) == 1
+
+    def test_all_ones_square(self):
+        matrix = [
+            ["1", "1", "1"],
+            ["1", "1", "1"],
+            ["1", "1", "1"],
+        ]
+        assert maximalSquare(matrix) == 9
