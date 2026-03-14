@@ -4,7 +4,6 @@
 #include "dlc_core/math.h"
 #include "dlc_core/stack.h"
 #include "dlc_core/tree.h"
-#include "dlc_core/vector.h"
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>

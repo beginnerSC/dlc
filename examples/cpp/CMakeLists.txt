@@ -1,3 +1,3 @@
-add_executable(vector_demo vector_demo.cpp)
+add_executable(demo demo.cpp)
 
-target_link_libraries(vector_demo PRIVATE dlc_core_static)
+target_link_libraries(demo PRIVATE dlc_core_static)

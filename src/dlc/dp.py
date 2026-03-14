@@ -2,6 +2,22 @@ from functools import cache
 from typing import List
 import numpy as np
 
+
+def coinChange(coins: List[int], amount: int) -> int:
+    """322. Coin Change"""
+    @cache
+    def dp(amount):
+        if amount < 0:
+            return float('inf')
+        elif amount == 0:
+            return 0
+        else:
+            return 1 + min(dp(amount - coin) for coin in coins)
+    
+    res = dp(amount)
+    
+    return -1 if res==float('inf') else res
+
 def maximalSquare(matrix: List[List[str]]) -> int:
     """221. Maximal Square"""
     
@@ -16,7 +32,6 @@ def maximalSquare(matrix: List[List[str]]) -> int:
                 max_len = max(max_len, matrix[i][j])
 
     return max_len**2
-
 
 def rob(nums: List[int]) -> int:
     """198. House Robber"""

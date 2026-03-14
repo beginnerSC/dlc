@@ -1,5 +1,25 @@
 """Unit tests for dynamic programming functions."""
-from dlc.dp import wordBreak, canJump, findLength, longestCommonSubsequence, uniquePaths, fib, rob, maximalSquare
+from dlc.dp import coinChange, wordBreak, canJump, findLength, longestCommonSubsequence, uniquePaths, fib, rob, maximalSquare
+
+
+class TestCoinChange:
+    def test_example_case(self):
+        assert coinChange([1, 2, 5], 11) == 3
+
+    def test_unreachable_amount(self):
+        assert coinChange([2], 3) == -1
+
+    def test_zero_amount(self):
+        assert coinChange([1, 2, 5], 0) == 0
+
+    def test_single_coin_exact_match(self):
+        assert coinChange([7], 14) == 2
+
+    def test_prefers_minimum_number_of_coins(self):
+        assert coinChange([1, 3, 4], 6) == 2
+
+    def test_unsorted_coin_values(self):
+        assert coinChange([5, 1, 2], 11) == 3
 
 class TestFib:
     def test_base_case_zero(self):
