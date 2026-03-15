@@ -117,15 +117,34 @@ TEST(DpTest, HouseRobber) {
     EXPECT_EQ(rob(nums3), 4);
 }
 
-TEST(DpTest, CoinChange) {
+TEST(DpTest, CoinChangeBasicCase) {
     std::vector<int> coins = {1, 2, 5};
     int amount = 11;
     EXPECT_EQ(coinChange(coins, amount), 3);
+}
 
-    ////////// will break the code //////////
-    // std::vector<int> coins = {2}; 
-    // int amount = 3;
-    // EXPECT_EQ(coinChange(coins, amount), -1);
+TEST(DpTest, CoinChangeNoSolution) {
+    std::vector<int> coins = {2};
+    int amount = 3;
+    EXPECT_EQ(coinChange(coins, amount), -1);
+}
+
+TEST(DpTest, CoinChangeZeroAmount) {
+    std::vector<int> coins = {1, 2, 5};
+    int amount = 0;
+    EXPECT_EQ(coinChange(coins, amount), 0);
+}
+
+TEST(DpTest, CoinChangeSingleCoinExactMatch) {
+    std::vector<int> coins = {7};
+    int amount = 14;
+    EXPECT_EQ(coinChange(coins, amount), 2);
+}
+
+TEST(DpTest, CoinChangeUnsortedCoins) {
+    std::vector<int> coins = {5, 1, 2};
+    int amount = 11;
+    EXPECT_EQ(coinChange(coins, amount), 3);
 }
 
 TEST(DpTest, climbStairs) {

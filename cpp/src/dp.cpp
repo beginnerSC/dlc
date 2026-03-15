@@ -228,25 +228,26 @@ int rob(std::vector<int>& nums) {   // 198. House Robber
 }
 
 int coinChange(std::vector<int>& coins, int amount) {   // 322. Coin Change
-    std::unordered_map<int, int> dp;
-    if (amount < 0) {
-        return -1;
-    } else if (amount == 0) {   // trace the code without this branch
-        return 0;
-    } else if (dp.contains(amount)) {
-        return dp[amount];
-    } else {
-        std::vector<int> num_coins;
-        int min = std::numeric_limits<int>::max();
-        for (int coin : coins){
-            int sub = coinChange(coins, amount - coin);
-            if (sub != -1) {
-                num_coins.push_back(sub + 1);
+    // working but slow
+    std::unordered_map<int, int> memo;
+
+    std::function<int(int)> dp = [&](int amount){
+        if (!memo.contains(amount)) {
+            int res;
+            if (amount < 0) {
+                res = 1e+8;
+            } else if (amount == 0) {
+                res = 0;
+            } else {
+                res = 1 + rg::min(coins | vs::transform([&](int coin){ return dp(amount - coin); }));
             }
+            memo[amount] = res;
         }
-        dp[amount] = rg::min(num_coins);
-        return dp[amount];
-    }
+        return memo[amount];
+    };
+    int res = dp(amount);
+
+    return (res >= 1e+8) ? -1 : res;
 }
 
 int climbStairs(int n) {   // 70. Climbing Stairs
