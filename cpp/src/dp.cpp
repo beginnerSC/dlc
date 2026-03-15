@@ -230,12 +230,13 @@ int rob(std::vector<int>& nums) {   // 198. House Robber
 int coinChange(std::vector<int>& coins, int amount) {   // 322. Coin Change
     // working but slow
     std::unordered_map<int, int> memo;
+    int max = 1e8;
 
     std::function<int(int)> dp = [&](int amount){
         if (!memo.contains(amount)) {
             int res;
             if (amount < 0) {
-                res = 1e+8;
+                res = max;
             } else if (amount == 0) {
                 res = 0;
             } else {
@@ -247,7 +248,7 @@ int coinChange(std::vector<int>& coins, int amount) {   // 322. Coin Change
     };
     int res = dp(amount);
 
-    return (res >= 1e+8) ? -1 : res;
+    return (res >= max) ? -1 : res;
 }
 
 int climbStairs(int n) {   // 70. Climbing Stairs
