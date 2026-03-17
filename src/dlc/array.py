@@ -2,6 +2,17 @@ from itertools import accumulate
 from typing import List
 from collections import deque
 
+def maxProfit(prices: List[int]) -> int:
+    """121. Best Time to Buy and Sell Stock"""
+    
+    cur_min = float('inf')
+    res = 0
+    for price in prices:
+        cur_min = min(cur_min, price)
+        res = max(res, price - cur_min)
+
+    return res
+
 def lengthOfLongestSubstring(s: str) -> int:
     """3. Longest Substring Without Repeating Characters"""
 
