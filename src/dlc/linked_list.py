@@ -5,6 +5,17 @@ class ListNode:
         self.val = val
         self.next = next
 
+def hasCycle(head: Optional[ListNode]) -> bool:
+    """141. Linked List Cycle"""
+    fast = slow = head
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+        if fast == slow:
+            return True
+    
+    return False
+
 def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
     """206. Reverse Linked List"""
     cur = None

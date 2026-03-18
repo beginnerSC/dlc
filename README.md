@@ -16,8 +16,8 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
         * Keep notes on C++ lambda recursion: Lambda 在定義完成前，其變數名稱（如 auto func）對 Lambda 內部是不可見的。可以用 `std::function` 
         * Local static is not needed!
     * 200 Number of Islands 可以讓 dfs 函數直接回傳 1 再加起來，但要把島塗成不同顏色 
-    * Total unique LeetCode problems: 27
-        * Python only: 121
+    * Total unique LeetCode problems: 29
+        * Python only: 121, 141
         * C++ only: 
         * Both: 1, 3, 5, 20, 21, 53, 55, 62, 70, 102, 121, 139, 151, 198, 200, 206, 221, 226, 238, 242, 322, 509, 628, 647, 704, 718, 1143 
 
