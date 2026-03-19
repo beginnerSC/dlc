@@ -1,7 +1,8 @@
 """Unit tests for string functions."""
 from dlc.string import (
-    reverseWords, isAnagram, isAnagram1, 
-    longestPalindrome, countSubstrings, isValid
+    reverseWords, isAnagram, isAnagram1,
+    longestPalindrome, countSubstrings, isValid,
+    isPalindrome,
 )
 
 
@@ -58,6 +59,44 @@ class TestCountSubstrings:
     def test_multiple_palindromes(self):
         """Test with multiple palindromes."""
         assert countSubstrings("aaa") == 6  # a, a, a, aa, aa, aaa
+
+
+class TestIsPalindrome:
+    def test_canonical_true(self):
+        """LeetCode 125 example: alphanumeric palindrome with punctuation."""
+        assert isPalindrome("A man, a plan, a canal: Panama") == True
+
+    def test_canonical_false(self):
+        """LeetCode 125 example: not a palindrome."""
+        assert isPalindrome("race a car") == False
+
+    def test_empty_string(self):
+        """Empty string is a palindrome."""
+        assert isPalindrome("") == True
+
+    def test_only_non_alphanumeric(self):
+        """Only punctuation/spaces — treated as empty after stripping."""
+        assert isPalindrome(" ") == True
+        assert isPalindrome(".,!?") == True
+
+    def test_single_character(self):
+        assert isPalindrome("a") == True
+        assert isPalindrome("1") == True
+
+    def test_case_insensitive(self):
+        """Case should not matter."""
+        assert isPalindrome("AbA") == True
+        assert isPalindrome("AbBa") == True
+
+    def test_digits(self):
+        """Numeric palindrome."""
+        assert isPalindrome("12321") == True
+        assert isPalindrome("12345") == False
+
+    def test_mixed_alphanumeric(self):
+        """Digits and letters together."""
+        assert isPalindrome("0P0") == True
+        assert isPalindrome("0P1") == False
 
 
 class TestIsValid:

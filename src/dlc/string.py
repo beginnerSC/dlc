@@ -1,6 +1,12 @@
 import re
 from collections import Counter, deque
 
+def isPalindrome(s: str) -> bool:
+    """125. Valid Palindrome"""
+    
+    s = re.sub('[^A-Za-z0-9]', '', s).lower()
+    return s == s[::-1]
+
 def reverseWords(s: str) -> str:
     """151. Reverse Words in a String"""
 
