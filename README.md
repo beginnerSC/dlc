@@ -76,6 +76,26 @@ upgrade_package.bat
 
 Python solutions are in `src/dlc/` with tests in `tests/python/`.
 
+
+* 如果有 `Solution` class，所有 dp C++ 都可以用 member function 取代 `std::function`: 
+```cpp
+#include <unordered_map>
+
+class Solution {
+    std::unordered_map<int, int> memo = {};
+public:
+    int fib(int n) {
+        if (!memo.contains(n)) {
+            if (n < 2) {
+                memo[n] = n;
+            } else {
+                memo[n] = fib(n-1) + fib(n-2);
+            }
+        }
+        return memo[n];
+    }
+};
+```
 * Clean AI solution to 5 (Longest Palindromic Substring) which modify `best_pos` and `max_len` inside the helper function (and yeah, naming the variables `l`, `r` is better than my `i`, `j`)
 ```cpp
 std::string longestPalindrome(std::string s) {
