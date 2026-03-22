@@ -6,6 +6,8 @@
 This is a repo to store my solutions to LeetCode questions, in both C++ and Python. 
 
 * TODO
+    * 740 Delete and Earn
+    * 239 Sliding Window Maximum: $O(n)$ monotonic deque or $O(n \log k)$ heap solution
     * 628 Maximum Product of Three Numbers: Python has heapq for partial sorting
     * 5 Longest Palindromic Substring has a cleaner c++ solution than the current one
     * 55 Jump Game C++ Time Limit Exceeded on `[1]*10000`
