@@ -7,7 +7,13 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
 
 * TODO
     * 740 Delete and Earn
-    * 239 Sliding Window Maximum: $O(n)$ monotonic deque or $O(n \log k)$ heap solution
+    * Data structure 應用
+        * 239 Sliding Window Maximum
+            * $O(n)$ monotonic deque or $O(n \log k)$ heap solution
+        * 146 LRU Cache
+        * 42 Trapping Rain Water
+        * 347 Top K Frequent Elements
+        * 295 Find Median from Data Stream
     * 628 Maximum Product of Three Numbers: Python has heapq for partial sorting
     * 5 Longest Palindromic Substring has a cleaner c++ solution than the current one
     * 55 Jump Game C++ Time Limit Exceeded on `[1]*10000`
