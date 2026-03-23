@@ -8,7 +8,7 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
 * TODO
     * 740 Delete and Earn
     * Data structure 應用
-        * 239 Sliding Window Maximum
+        * 239 Sliding Window Maximum 
             * $O(n)$ monotonic deque or $O(n \log k)$ heap solution
         * 146 LRU Cache
         * 42 Trapping Rain Water
