@@ -6,7 +6,8 @@
 This is a repo to store my solutions to LeetCode questions, in both C++ and Python. 
 
 * TODO
-    * 740 Delete and Earn
+    * [42 Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
+    * [740 Delete and Earn](https://leetcode.com/problems/delete-and-earn/description/)
     * Data structure 應用
         * 239 Sliding Window Maximum 
             * $O(n)$ monotonic deque or $O(n \log k)$ heap solution
