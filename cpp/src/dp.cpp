@@ -8,7 +8,7 @@
 namespace rg = std::ranges;
 namespace vs = std::views;
 
-int fib1(int n) {        // 509. Fibonacci Number  https://leetcode.com/problems/fibonacci-number/description/
+int fib1(int n) {        // 509. Fibonacci Number  https://leetcode.com/problems/fibonacci-number/description/  超連結只有在 IDE 裡可以直接點開，iPad 上不行
     if (n < 2) {
         return n;
     } else {
