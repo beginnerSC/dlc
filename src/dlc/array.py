@@ -16,7 +16,7 @@ def trap(height):
             return 0
 
     m1, m2 = heapq.nlargest(2, set(height))
-    if (set([m1, m2]) == set([height[0], height[-1]])) and max(height[1:-1]) < m1:
+    if (set([m1, m2]) == set([height[0], height[-1]])) and max(height[1:-1]) < m1:  # want this to be True with [9, 0, 1, 7, 7, 9] but got False
         lower = min(height[0], height[-1])
         return sum(lower-h for h in height[1:-1])
     else:
@@ -28,7 +28,7 @@ def trap(height):
         aaa = [height[l: r+1] for l, r in zip(endings[:-1], endings[1:])]
 
         res = sum(trap(height[l: r+1]) for l, r in zip(endings[:-1], endings[1:]))
-        
+
         return res
 
 def maxProfit(prices: List[int]) -> int:
