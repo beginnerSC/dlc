@@ -5,6 +5,7 @@ from dlc.array import (
     lengthOfLongestSubstring,
     lengthOfLongestSubstring1,
     maxProfit,
+    trap,
 )
 
 
@@ -69,3 +70,10 @@ class TestMaxProfit:
     def test_best_sell_not_last_day(self):
         """Best sell may happen before the final day."""
         assert maxProfit([1, 9, 2, 3]) == 8
+
+
+class TestTrap:
+    def test_leetcode_example(self):
+        # assert trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]) == 6
+        # assert trap([0, 0, 0]) == 0
+        assert trap([8,2,8,9,0,1,7,7,9]) == 27

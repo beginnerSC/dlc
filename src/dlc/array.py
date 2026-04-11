@@ -1,6 +1,35 @@
 from itertools import accumulate
 from typing import List
 from collections import deque
+import heapq
+
+def trap(height):
+    """42. Trapping Rain Water"""
+    if len(height) < 3:
+        return 0
+
+    if len(height) == 3:
+        a, b, c = height
+        if b<a and b<c:
+            return min(a, c) - b
+        else:
+            return 0
+
+    m1, m2 = heapq.nlargest(2, set(height))
+    if (set([m1, m2]) == set([height[0], height[-1]])) and max(height[1:-1]) < m1:
+        lower = min(height[0], height[-1])
+        return sum(lower-h for h in height[1:-1])
+    else:
+        endings = [i for i, height in enumerate(height) if height == m1]
+        if len(endings) == 1:
+            endings += [i for i, height in enumerate(height) if height == m2]
+        endings = sorted(endings + [0, len(height)-1])
+
+        aaa = [height[l: r+1] for l, r in zip(endings[:-1], endings[1:])]
+
+        res = sum(trap(height[l: r+1]) for l, r in zip(endings[:-1], endings[1:]))
+        
+        return res
 
 def maxProfit(prices: List[int]) -> int:
     """121. Best Time to Buy and Sell Stock"""
