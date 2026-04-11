@@ -74,6 +74,29 @@ class TestMaxProfit:
 
 class TestTrap:
     def test_leetcode_example(self):
-        # assert trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]) == 6
-        # assert trap([0, 0, 0]) == 0
+        assert trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]) == 6
+
+    def test_all_zeros(self):
+        assert trap([0, 0, 0]) == 0
+
+    def test_empty_and_too_short(self):
+        assert trap([]) == 0
+        assert trap([1]) == 0
+        assert trap([1, 2]) == 0
+
+    def test_monotonic_heights(self):
+        assert trap([1, 2, 3, 4]) == 0
+        assert trap([4, 3, 2, 1]) == 0
+
+    def test_single_basin(self):
+        assert trap([2, 0, 2]) == 2
+        assert trap([3, 0, 1, 3]) == 5
+
+    def test_classic_complex_case(self):
+        assert trap([4, 2, 0, 3, 2, 5]) == 9
+
+    def test_uneven_walls(self):
+        assert trap([5, 4, 1, 2]) == 1
+
+    def test_tall_walls_and_mixed_valleys(self):
         assert trap([8,2,8,9,0,1,7,7,9]) == 27

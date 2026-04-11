@@ -7,6 +7,28 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
 
 * TODO
     * [42 Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
+```python
+def trap(height): 
+    """42. Trapping Rain Water"""   # optimized two pointer solution by AI
+    if not height: return 0
+    
+    left, right = 0, len(height) - 1
+    left_max, right_max = height[left], height[right]
+    water = 0
+    
+    while left < right:
+        # Always move the pointer with the smaller "wall"
+        if left_max < right_max:
+            left += 1
+            left_max = max(left_max, height[left])
+            water += left_max - height[left]
+        else:
+            right -= 1
+            right_max = max(right_max, height[right])
+            water += right_max - height[right]
+            
+    return water
+```
     * [740 Delete and Earn](https://leetcode.com/problems/delete-and-earn/description/)
     * Data structure 應用
         * 239 Sliding Window Maximum 

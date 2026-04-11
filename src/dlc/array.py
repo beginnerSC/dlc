@@ -5,6 +5,13 @@ import heapq
 
 def trap(height):
     """42. Trapping Rain Water"""
+
+    # 找最大的兩個 element，recursively break the array
+
+    # 320/324 testcases passed: 
+    # Memory Limit Exceeded: [100000,0,99999,0,99998,0,99997,0,...,90001], 
+    # Time Limit Exceeded: list(range(15000))
+    
     if len(height) < 3:
         return 0
 
@@ -24,8 +31,6 @@ def trap(height):
         if len(endings) == 1:
             endings += [i for i, height in enumerate(height) if height == m2]
         endings = sorted(endings + [0, len(height)-1])
-
-        aaa = [height[l: r+1] for l, r in zip(endings[:-1], endings[1:])]
 
         return sum(trap(height[l: r+1]) for l, r in zip(endings[:-1], endings[1:]))
 
