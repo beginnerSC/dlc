@@ -5,7 +5,11 @@ from functools import cache
 import heapq
 
 def trap(height):
-    """42. Trapping Rain Water"""
+    """42. Trapping Rain Water"""   
+    
+    # Recursively split the array at its highest peak
+    # Avg O(n log n) if highest peak is more or less in the middle, worse case O(n^2) for sorted array
+    # This Divide and Conquer approach is easily adaptable to find the maximum individual pool that the two-pointer approach cannot handle
 
     @cache
     def solve(l, r):
