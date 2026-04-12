@@ -34,7 +34,7 @@ def trap(height):
         * 239 Sliding Window Maximum 
             * $O(n)$ monotonic deque or $O(n \log k)$ heap solution
         * 146 LRU Cache
-        * 42 Trapping Rain Water  <-----------
+        * 42 Trapping Rain Water  <----------
         * 347 Top K Frequent Elements
         * 295 Find Median from Data Stream
     * 628 Maximum Product of Three Numbers: Python has heapq for partial sorting
