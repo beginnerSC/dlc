@@ -1,38 +1,31 @@
 from itertools import accumulate
 from typing import List
 from collections import deque
+from functools import cache
 import heapq
 
 def trap(height):
     """42. Trapping Rain Water"""
 
-    # 找最大的兩個 element，recursively break the array
-
-    # 320/324 testcases passed: 
-    # Memory Limit Exceeded: [100000,0,99999,0,99998,0,99997,0,...,90001], 
-    # Time Limit Exceeded: list(range(15000))
-    
-    if len(height) < 3:
-        return 0
-
-    elif len(height) == 3:
-        a, b, c = height
-        if b<a and b<c:
-            return min(a, c) - b
-        else:
+    @cache
+    def solve(l, r):
+        if r - l < 2:
             return 0
-        
-    elif max(height[1:-1]) < min(height[0], height[-1]):
-        lower = min(height[0], height[-1])
-        return sum(lower-h for h in height[1:-1])
-    else:
-        m1, m2 = heapq.nlargest(2, set(height))
-        endings = [i for i, height in enumerate(height) if height == m1]
-        if len(endings) == 1:
-            endings += [i for i, height in enumerate(height) if height == m2]
-        endings = sorted(endings + [0, len(height)-1])
 
-        return sum(trap(height[l: r+1]) for l, r in zip(endings[:-1], endings[1:]))
+        # Find highest peak
+        max_idx = l + 1 + height[l+1:r].index(max(height[l+1:r]))
+
+        # If boundaries are the highest in this range, then this range is one pool,
+        # in which case calculate water directly; otherwise, split recursively
+        boundary_min = min(height[l], height[r])
+        if height[max_idx] < boundary_min:
+            res = sum((boundary_min - h) for h in height[l+1:r])
+        else:
+            res = solve(l, max_idx) + solve(max_idx, r)
+
+        return res
+
+    return solve(0, len(height) - 1)
 
 def maxProfit(prices: List[int]) -> int:
     """121. Best Time to Buy and Sell Stock"""
