@@ -7,28 +7,6 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
 
 * TODO
     * [42 Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
-```python
-def trap(height): 
-    """42. Trapping Rain Water"""   # optimized two pointer solution by AI
-    if not height: return 0
-    
-    left, right = 0, len(height) - 1
-    left_max, right_max = height[left], height[right]
-    water = 0
-    
-    while left < right:
-        # Always move the pointer with the smaller "wall"
-        if left_max < right_max:
-            left += 1
-            left_max = max(left_max, height[left])
-            water += left_max - height[left]
-        else:
-            right -= 1
-            right_max = max(right_max, height[right])
-            water += right_max - height[right]
-            
-    return water
-```
     * [740 Delete and Earn](https://leetcode.com/problems/delete-and-earn/description/)
     * Data structure 應用
         * 239 Sliding Window Maximum 
@@ -51,6 +29,29 @@ def trap(height):
         * Python only: 42, 121, 125, 141, 217
         * C++ only: 
         * Both: 1, 3, 5, 20, 21, 53, 55, 62, 70, 102, 121, 139, 151, 198, 200, 206, 221, 226, 238, 242, 322, 509, 628, 647, 704, 718, 1143 
+
+```python
+def trap(height): 
+    """42. Trapping Rain Water"""   # optimized two pointer solution by AI
+    if not height: return 0
+    
+    l, r = 0, len(height) - 1
+    max_l, max_r = height[l], height[r]
+    water = 0
+    
+    while l < r:
+        # Always move the pointer with the smaller "wall"
+        if max_l < max_r:
+            l += 1
+            max_l = max(max_l, height[l])
+            water += max_l - height[l]
+        else:
+            r -= 1
+            max_r = max(max_r, height[r])
+            water += max_r - height[r]
+            
+    return water
+```
 
 ## Project Structure
 
