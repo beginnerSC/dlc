@@ -11,6 +11,16 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
     * Data structure 應用
         * 239 Sliding Window Maximum 
             * $O(n)$ monotonic deque or $O(n \log k)$ heap solution
+            * 可以直接用 heapq，用標記取代刪除，掉出窗口的元素還在 heap 裡，直到在頂端檢測到才真正 pop，缺點是 heap size 為 $O(n)$，時間是 $O(n \log n)$
+            * Indexed Priority Queue (IPQ)：用一個陣列記下 heap 所有交換步驟，隨時能找到特定元素
+            * 要可以建立一個自己的「模式庫」。每當你看完一個最優解，不要只看程式碼，要問：這個解法犧牲了什麼？它是怎麼簡化問題的？
+            * 靈活性是建立在對 Trade-offs 的深刻理解上。當你發現自己卡在某個「一定要這樣做」的框架時，可以嘗試調用以下幾種常見的思維替換模型
+                * Space-Time Trade-off：算過的東西就存起來
+                * Lazy vs. Eager Evaluation：這題的 heap lazy deletion
+                * Logical vs. Physical Deletion：同 lazy deletion
+                * Linear vs. Binary/Doubling：真的需要一步一步走嗎？能不能跳著走？
+                * Internal vs. External View：「維護一個結構（heap），讓它隨時符合某個性質」→「不維護性質，我只觀察『什麼樣的元素』有資格成為答案」
+                * Discretization：將巨大的數值映射到小的索引空間
         * 146 LRU Cache
         * 42 Trapping Rain Water  <------
         * 347 Top K Frequent Elements
