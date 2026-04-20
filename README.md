@@ -9,7 +9,7 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
     * [42 Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
     * [740 Delete and Earn](https://leetcode.com/problems/delete-and-earn/description/)
     * Data structure 應用
-        * 239 Sliding Window Maximum 
+        * 239 Sliding Window Maximum ($O(n \log n)$ solution implemented but has bug)
             * $O(n)$ monotonic deque or $O(n \log k)$ heap solution
             * 可以直接用 heapq，用標記取代刪除，掉出窗口的元素還在 heap 裡，直到在頂端檢測到才真正 pop，缺點是 heap size 為 $O(n)$，時間是 $O(n \log n)$
             * Indexed Priority Queue (IPQ)：用一個陣列記下 heap 所有交換步驟，隨時能找到特定元素
@@ -36,7 +36,7 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
         * Local static is not needed!
     * 200 Number of Islands 可以讓 dfs 函數直接回傳 1 再加起來，但要把島塗成不同顏色
     * Total unique LeetCode problems: 30
-        * Python only: 42, 121, 125, 141, 217
+        * Python only: 42, 121, 125, 141, 217, 239
         * C++ only: 
         * Both: 1, 3, 5, 20, 21, 53, 55, 62, 70, 102, 121, 139, 151, 198, 200, 206, 221, 226, 238, 242, 322, 509, 628, 647, 704, 718, 1143 
 
