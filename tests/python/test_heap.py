@@ -277,26 +277,26 @@ class TestMaxSlidingWindow:
         
         assert result == expected, f"Expected {expected}, but got {result}"
     
-    # def test_max_sliding_window_simple(self):
-    #     """Simple test case: all positive numbers"""
-    #     nums = [1, 3, 1, 2, 0, 5]
-    #     k = 3
-    #     expected = [3, 3, 2, 5]
-    #     result = maxSlidingWindow(nums, k)
-    #     assert result == expected
+    def test_max_sliding_window_simple(self):
+        """Simple test case: all positive numbers"""
+        nums = [1, 3, 1, 2, 0, 5]
+        k = 3
+        expected = [3, 3, 2, 5]
+        result = maxSlidingWindow(nums, k)
+        assert result == expected
     
-    # def test_max_sliding_window_single_window(self):
-    #     """Window size equals array length"""
-    #     nums = [5, 2, 8, 1]
-    #     k = 4
-    #     expected = [8]
-    #     result = maxSlidingWindow(nums, k)
-    #     assert result == expected
+    def test_max_sliding_window_single_window(self):
+        """Window size equals array length"""
+        nums = [5, 2, 8, 1]
+        k = 4
+        expected = [8]
+        result = maxSlidingWindow(nums, k)
+        assert result == expected
     
-    # def test_max_sliding_window_k_equals_1(self):
-    #     """Window size of 1 should return all elements"""
-    #     nums = [1, 3, 1, 2, 0, 5]
-    #     k = 1
-    #     expected = [1, 3, 1, 2, 0, 5]
-    #     result = maxSlidingWindow(nums, k)
-    #     assert result == expected
+    def test_max_sliding_window_k_equals_1(self):
+        """Window size of 1 should return all elements"""
+        nums = [1, 3, 1, 2, 0, 5]
+        k = 1
+        expected = [1, 3, 1, 2, 0, 5]
+        result = maxSlidingWindow(nums, k)
+        assert result == expected

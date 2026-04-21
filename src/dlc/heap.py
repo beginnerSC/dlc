@@ -4,7 +4,7 @@ import heapq
 
 def maxSlidingWindow(nums: List[int], k: int) -> List[int]:
     """239. Sliding Window Maximum"""
-    
+
     n = len(nums)
     nums = [-num for num in nums]
     heap = list(zip(nums[:k], range(k)))
@@ -13,7 +13,7 @@ def maxSlidingWindow(nums: List[int], k: int) -> List[int]:
 
     for i, j in zip(range(1, n-k+1), range(k, n)):
         heapq.heappush(heap, (nums[j], j))
-        if heap[0][1] < i:
+        while heap[0][1] < i:
             heapq.heappop(heap)
         res.append(heap[0][0])
     
