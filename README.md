@@ -9,7 +9,7 @@ This is a repo to store my solutions to LeetCode questions, in both C++ and Pyth
     * [42 Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)
     * [740 Delete and Earn](https://leetcode.com/problems/delete-and-earn/description/)
     * Data structure 應用
-        * 239 Sliding Window Maximum ($O(n \log n)$ solution implemented)
+        * 239 Sliding Window Maximum ($O(n \log n)$ solution implemented) 
             * $O(n)$ monotonic deque or $O(n \log k)$ heap solution
             * 可以直接用 heapq，用標記取代刪除，掉出窗口的元素還在 heap 裡，直到在頂端檢測到才真正 pop，缺點是 heap size 為 $O(n)$，時間是 $O(n \log n)$
             * Indexed Priority Queue (IPQ)：用一個陣列記下 heap 所有交換步驟，隨時能找到特定元素
